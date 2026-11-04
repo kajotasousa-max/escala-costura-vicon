@@ -264,7 +264,7 @@ details.step[open] .chev{transform:rotate(180deg)}
   .brand{padding-bottom:0}
   nav.tabs,.savestate{display:none}
   .wrap{padding:0 10px calc(150px + env(safe-area-inset-bottom,0px))}
-  .bnav{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+  .bnav{display:grid;grid-template-columns:repeat(6,1fr);position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
   .bnav button{border:0;background:transparent;display:flex;flex-direction:column;align-items:center;gap:2px;padding:7px 2px 8px;font-size:11px;font-weight:600;color:var(--muted)}
   .bnav svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
   .bnav button[aria-selected="true"]{color:var(--denim)}
@@ -323,6 +323,54 @@ details.step[open] .chev{transform:rotate(180deg)}
   .modal .row{flex-wrap:wrap}
   .modal .row .btn{flex:1 1 45%;min-height:44px}
   .toast{bottom:calc(130px + env(safe-area-inset-bottom,0px))}
+}
+
+
+/* ---------- GD ---------- */
+.gdkpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}
+.gdkpis .kpi{min-width:0}.gdkpis .kpi b{font-size:26px}
+.kin{width:100%!important;border:0!important;background:transparent!important;padding:0!important;min-height:0!important;font-family:var(--fh);font-weight:700;font-size:26px;font-variant-numeric:tabular-nums;box-shadow:none!important}
+.gdc{padding:14px 16px}
+.gdh{display:flex;align-items:center;gap:10px;font-size:17px;margin:0 0 10px;flex-wrap:wrap}
+.gdh i{font-style:normal;display:inline-grid;place-items:center;min-width:34px;height:26px;border-radius:7px;color:#fff;font-size:13px;font-weight:800;background:var(--g-tile)}
+.gdh i.n03,.gdh i.n07{background:var(--stitch)} .gdh i.n04{background:#D97706} .gdh i.n02,.gdh i.n06{background:#0F766E} .gdh i.n08{background:var(--ink)}
+.gdh .auto{font-size:11.5px;font-weight:700;background:var(--ok-soft);color:var(--ok);border-radius:999px;padding:1px 8px}
+table.gdt{width:100%;border-collapse:collapse;font-size:14px}
+table.gdt th{text-align:left;font-size:12px;color:var(--muted);font-weight:600;padding:6px;border-bottom:1px solid var(--line);white-space:nowrap}
+table.gdt td{padding:5px 6px;border-bottom:1px solid var(--line);vertical-align:middle}
+table.gdt .r{text-align:right;font-variant-numeric:tabular-nums}
+table.gdt tr.tot td{background:var(--paper)}
+table.gdt tr.venc td{background:var(--stitch-soft)}
+table.gdt tr.hoje td{box-shadow:inset 0 2px 0 var(--chalk),inset 0 -2px 0 var(--chalk)}
+table.gdt tr.quinta td:first-child b::after{content:" · entrega";color:var(--warn);font-weight:700;font-size:12px}
+table.gdt.big{font-size:16px}
+.qin{width:84px!important;text-align:right;min-height:34px!important}
+.tin{width:100%;min-width:140px;min-height:34px!important}
+.neg{color:var(--stitch);font-weight:700}
+.gdgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
+.gdline{padding:4px 0;font-size:14.5px}
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.qgrid .qt{display:block;color:#B45309;font-size:13px;margin-bottom:4px}
+.qf{display:flex;flex-direction:column;gap:2px;font-size:12.5px;color:var(--muted);font-weight:600;margin-bottom:6px}
+.qf input{width:100%}
+details.hora{margin-top:12px;border-top:2px dashed var(--line);padding-top:10px}
+details.hora>summary{cursor:pointer;font-weight:700}
+.modal.reu{max-width:860px}
+.reutop{display:flex;justify-content:space-between;align-items:center}
+.reutime{font-family:var(--fh);font-size:30px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--denim)}
+.reutime.over{color:var(--stitch)}
+.reusteps{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
+.reusteps button{display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:7px 8px;font-weight:600;font-size:13px;text-align:left}
+.reusteps button i{font-style:normal;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--paper);font-size:12px;font-weight:800;flex:none}
+.reusteps button.on{background:var(--g-btn);color:#fff;border-color:transparent}.reusteps button.on i{background:var(--g-giz);color:#18233A}
+.reusteps button.done i{background:var(--ok);color:#fff}
+.reubody{font-size:16px}
+@media (max-width:760px){
+  .gdkpis{grid-template-columns:1fr 1fr}.gdkpis .kpi b,.kin{font-size:21px}
+  .gdgrid,.qgrid{grid-template-columns:1fr}
+  .reusteps{grid-template-columns:1fr 1fr}
+  .reutime{font-size:24px}
+  .bnav button{font-size:10.5px}
 }
 
 /* ---------- saúde da matriz ---------- */
@@ -539,11 +587,13 @@ chev:'<path d="M6 9l6 6 6-6"/>',
 envelope:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.6 7.2 12 13l8.4-5.8"/>',
 conversa:'<path d="M20 11.6a8 8 0 0 1-11.7 7.1L4 20l1.2-4A8 8 0 1 1 20 11.6z"/>',
 impressora:'<path d="M7 9V3.5h10V9"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 14h10v6.5H7z"/>',
-alerta:'<path d="M12 4 2.8 19.5h18.4z"/><path d="M12 10v4.2M12 17v.1"/>'
+alerta:'<path d="M12 4 2.8 19.5h18.4z"/><path d="M12 10v4.2M12 17v.1"/>',
+quadro:'<rect x="3" y="3.5" width="18" height="12.5" rx="1.5"/><path d="M8 20.5l1.6-4.5M16 20.5l-1.6-4.5"/><path d="M6.5 12.5l3-3.2 2.6 2.2 4.4-4.6"/>',
+relogio:'<circle cx="12" cy="13" r="7.5"/><path d="M12 9v4.2l2.6 1.6M9.5 2.8h5"/>'
 };
 const ic=(n,c="")=>`<svg class="ic ${c}" viewBox="0 0 24 24" aria-hidden="true">${ICON[n]||""}</svg>`;
 const GUIA_URL=/github\.io$/.test(location.hostname)?"manual.html":"https://claude.ai/artifact/JyXAZWQeVq2LioVUwLJLDV";
-const NAV=[["dia","Dia","Dia","maquina"],["assiduidade","Assiduidade","Ranking","medalha"],["produtos","Produtos","Produtos","bolsa"],["matriz","Matriz","Matriz","carretel"],["ajustes","Ajustes","Ajustes","fita"]];
+const NAV=[["dia","Dia","Dia","maquina"],["gd","Gestão diária","GD","quadro"],["assiduidade","Assiduidade","Ranking","medalha"],["produtos","Produtos","Produtos","bolsa"],["matriz","Matriz","Matriz","carretel"],["ajustes","Ajustes","Ajustes","fita"]];
 document.getElementById("tabs").innerHTML=NAV.map(([k,t,,i])=>`<button role="tab" data-tab="${k}" aria-selected="${k==="dia"}">${ic(i)}<span>${t}</span></button>`).join("");
 document.getElementById("bnav").innerHTML=NAV.map(([k,,t,i])=>`<button data-tab="${k}" aria-selected="${k==="dia"}">${ic(i)}<span>${t}</span></button>`).join("");
 /* cabeçalho de passo do dia (sequência real 1–5) e de página */
@@ -551,8 +601,8 @@ const passo=(n,icon,title)=>`<span class="sico">${ic(icon)}<i>${n}</i></span><sp
 const pagina=(icon,title)=>`<span class="pico">${ic(icon)}</span><span>${title}</span>`;
 
 /* ============================ STATE & STORAGE ============================ */
-const DEF_SETTINGS={empresa:"Vicon",setor:"Costura",inicio:"07:00",fim:"17:00",almIni:"12:00",almFim:"13:00",contarJustificadas:false,emails:"",emailAssunto:"Escala da costura",emailEndpoint:"",emailToken:"",emailRanking:true};
-const S={settings:{...DEF_SETTINGS},postos:[],pessoas:[],produtos:[],dias:{}};
+const DEF_SETTINGS={empresa:"Vicon",setor:"Costura",inicio:"07:00",fim:"17:00",almIni:"12:00",almFim:"13:00",contarJustificadas:false,emails:"",emailAssunto:"Escala da costura",emailEndpoint:"",emailToken:"",emailRanking:true,gdVerde:100,gdAmarelo:90};
+const S={settings:{...DEF_SETTINGS},postos:[],pessoas:[],produtos:[],acoes:[],dias:{}};
 let store=null, tab="dia", curDate=todayISO(), day=null, dayDirty=false;
 let selProd=null, rankPeriod="30", mvEditId=null, escView="hora", blocoSel=null, openSteps={s1:window.innerWidth>760,s2:window.innerWidth>760};
 let saudeOpen=null, simQ="", simH="", simModo="bal";
@@ -574,7 +624,7 @@ function localStore(){
     mode:"local",
     async load(){
       const L=k=>{const v=g(k);return v&&Array.isArray(v.lista)?v.lista:null};
-      const out={settings:g("cfg_settings"),postos:L("cfg_postos"),pessoas:L("cfg_pessoas"),produtos:L("cfg_produtos"),dias:{}};
+      const out={settings:g("cfg_settings"),postos:L("cfg_postos"),pessoas:L("cfg_pessoas"),produtos:L("cfg_produtos"),acoes:L("cfg_acoes"),dias:{}};
       try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith(K+"dia_")){const v=g(k.slice(K.length));if(v)out.dias[v.data]=v}}}catch(e){}
       return out;
     },
@@ -591,9 +641,9 @@ function dbStore(db){
     mode:"db",
     async load(){
       const get=async p=>{const s=await retry(()=>db.doc(p).get());return s.exists?s.data():null};
-      const [st,po,pe,pr]=await Promise.all([get("cfg/settings"),get("cfg/postos"),get("cfg/pessoas"),get("cfg/produtos")]);
+      const [st,po,pe,pr,ac]=await Promise.all([get("cfg/settings"),get("cfg/postos"),get("cfg/pessoas"),get("cfg/produtos"),get("cfg/acoes")]);
       const dias={};const qs=await retry(()=>db.collection("dias").get());qs.docs.forEach(d=>{const v=d.data();if(v&&v.data)dias[v.data]=v});
-      return{settings:st,postos:po&&po.lista,pessoas:pe&&pe.lista,produtos:pr&&pr.lista,dias};
+      return{settings:st,postos:po&&po.lista,pessoas:pe&&pe.lista,produtos:pr&&pr.lista,acoes:ac&&ac.lista,dias};
     },
     saveCfg(key,obj){return q("cfg/"+key,()=>retry(()=>db.doc("cfg/"+key).set(clone(obj))))},
     saveDay(d){return q("dias/"+d.data,()=>retry(()=>db.doc("dias/"+d.data).set(clone(d))))},
@@ -938,6 +988,247 @@ function viewSimulacao(p){
   return h+yamazumiSVG(rows,r.takt,"Yamazumi de "+p.nome)+yamazumiTabela(rows,r.takt,true)+`</div>`;
 }
 
+
+/* ============================ GD — GERENCIAMENTO DIÁRIO (modelo A3 da fábrica) ============================
+   Fonte única: o app. A folha A3 sai preenchida com o que já se sabe e com espaço para caneta no resto. */
+const AREAS_APOIO=["Corte","Silk","Arremate / Desviragem"];
+const ST_ACAO=["Aberta","Em andamento","Escalada","Concluída"];
+const FOCO_SEM=["Produção conforme PCP","Produção conforme PCP","Fechamento da programação de entrega","Expedição / entrega aos clientes","Produção e preparação da próxima semana"];
+let gdHoraL=null;
+function linhasProd(){return linhas().filter(l=>l!=="Apoio")}
+function gdOf(d){d.gd=d.gd||{};const g=d.gd;g.real=g.real||{};g.obs=g.obs||{};g.hora=g.hora||{};g.q=g.q||{};g.apoio=g.apoio||{};g.restr=g.restr||[];return g}
+function metasLinha(d){
+  const m={},p={};
+  (d.producao||[]).forEach(it=>{const pr=produto(it.prodId);if(!pr)return;const L=pr.familia||"Sem linha";m[L]=(m[L]||0)+(Number(it.qtd)||0);(p[L]=p[L]||[]).push(pr.nome.replace(/\s*—\s*linha completa$/i,""))});
+  return{m,p};
+}
+function linhasGD(d){const {m}=metasLinha(d);const out=linhasProd();Object.keys(m).forEach(L=>{if(!out.includes(L)&&L!=="Apoio")out.push(L)});return out}
+function slotsHora(){const a=mins(S.settings.inicio),b=mins(S.settings.fim),out=[];for(let t=a;t<b;t+=60){const e=Math.min(b,t+60),h=horasIntervalo(t,e);if(h>0.01)out.push({a:t,b:e,h})}return out}
+const numOrNull=v=>v===""||v==null||isNaN(Number(v))?null:Number(v);
+function somaHora(d,L){const hr=gdOf(d).hora[L];if(!hr)return null;const v=Object.values(hr).map(numOrNull).filter(x=>x!=null);return v.length?v.reduce((a,b)=>a+b,0):null}
+function realLinha(d,L){const g=gdOf(d),r=numOrNull(g.real[L]);return r!=null?r:somaHora(d,L)}
+/* meta de comparação: dia inteiro quando o realizado foi digitado; meta acumulada até a última hora lançada quando vem do hora a hora */
+function metaRef(d,L){const g=gdOf(d),mt=metasLinha(d).m[L]||0;if(numOrNull(g.real[L])!=null)return{meta:mt,ate:null};
+  const hr=g.hora[L];if(!hr)return{meta:mt,ate:null};const idx=Object.keys(hr).filter(k=>numOrNull(hr[k])!=null).map(Number);if(!idx.length)return{meta:mt,ate:null};
+  const sl=slotsHora(),tot=sl.reduce((a,x)=>a+x.h,0),last=Math.max(...idx);let acc=0;for(let i=0;i<=last&&i<sl.length;i++)acc+=tot?mt*sl[i].h/tot:0;return{meta:acc,ate:sl[Math.min(last,sl.length-1)]?hhmm(sl[Math.min(last,sl.length-1)].b):null}}
+function farol(real,meta){if(real==null||!meta)return null;const p=real/meta*100;return p>=Number(S.settings.gdVerde??100)?"ok":p>=Number(S.settings.gdAmarelo??90)?"amb":"red"}
+const FAROL_TXT={ok:"Dentro do plano",amb:"Atenção",red:"Desvio"};
+function totaisGD(d){
+  const {m}=metasLinha(d);let meta=0,real=0,ref=0,temReal=false,parcial=false;
+  linhasGD(d).forEach(L=>{meta+=m[L]||0;const r=realLinha(d,L);if(r!=null){real+=r;temReal=true;const mr=metaRef(d,L);ref+=mr.meta;if(mr.ate)parcial=true}});
+  return{meta,real:temReal?real:null,ref,ating:temReal&&ref?real/ref:null,parcial};
+}
+function gdPessoas(segs){
+  const at=ativos();
+  const aus=at.filter(p=>["F","J"].includes(day.presenca[p.id]?.st));
+  const parc=at.filter(p=>day.presenca[p.id]?.st==="A");
+  const rem=new Set(),desc=new Set(),fraco=new Map();
+  segs.forEach(s=>{
+    Object.keys(s.rem).forEach(k=>{if(s.rem[k]>0)desc.add(k)});
+    s.as.forEach(x=>{const p=pessoa(x.pid);if(!p)return;if(p.habitual&&p.habitual!==x.postoId)rem.add(x.pid);if(lvl(p,x.postoId)<75)fraco.set(x.postoId,p.nome)});
+  });
+  const treino=[];S.postos.forEach(q=>{const ap=at.filter(p=>lvl(p,q.id)>=75).length;if(ap<(q.meta??2)&&segs.some(s=>s.need[q.id]!=null)){const f=at.filter(p=>lvl(p,q.id)===50).map(p=>p.nome);treino.push(`${nomePosto(q.id)}${f.length?": treinar "+f.slice(0,2).join(" ou "):""}`)}});
+  return{pres:presentes().length,total:at.length,aus:aus.length,parc:parc.length,ausNomes:aus.map(p=>p.nome),rem:rem.size,
+    desc:[...desc].map(nomePosto),fraco:[...fraco].map(([k,n])=>`${nomePosto(k)} (${n}, nível 50)`),treino};
+}
+const acaoVencida=a=>a.status!=="Concluída"&&a.prazo&&a.prazo<todayISO();
+function acoesAbertas(){return(S.acoes||[]).filter(a=>a.status!=="Concluída").sort((a,b)=>(acaoVencida(b)-acaoVencida(a))||String(a.prazo||"9").localeCompare(String(b.prazo||"9")))}
+function semanaDe(iso){const d=new Date(iso+"T12:00:00"),w=(d.getDay()+6)%7;d.setDate(d.getDate()-w);return[0,1,2,3,4].map(i=>{const x=new Date(d);x.setDate(d.getDate()+i);return x.toISOString().slice(0,10)})}
+function diaSemana(iso){if(iso===curDate)return day;return S.dias[iso]?clone(S.dias[iso]):null}
+function diaAnterior(){const ks=Object.keys(S.dias).filter(k=>k<curDate).sort();return ks.length?clone(S.dias[ks[ks.length-1]]):null}
+const fmtQ=v=>v==null?"—":Number(v).toLocaleString("pt-BR",{maximumFractionDigits:0});
+const fmtPct=v=>v==null?"—":(v*100).toLocaleString("pt-BR",{maximumFractionDigits:0})+"%";
+const farolTag=f=>f?`<span class="tag ${f}">${FAROL_TXT[f]}</span>`:`<span class="muted small">aguardando</span>`;
+
+function viewGD(){
+  const segs=escala(),g=gdOf(day),{m,p}=metasLinha(day),Ls=linhasGD(day),T=totaisGD(day),pe=gdPessoas(segs);
+  const ab=acoesAbertas(),venc=ab.filter(acaoVencida).length;
+  let h=`<div class="row" style="margin-top:16px;align-items:center"><h2 class="ph1" style="flex:1">${pagina("quadro","Gerenciamento diário")}</h2>
+    <label class="row small"><span class="muted">Data</span><input type="date" id="dateIn" value="${curDate}"></label>
+    <button class="btn primary" data-act="reuniao">${ic("relogio")}Iniciar reunião</button><button class="btn" data-act="gdPrint">${ic("impressora")}Imprimir quadro A3</button></div>
+  <p class="small muted" style="margin:4px 0 0">Visão das 4 linhas e das áreas de apoio. Metas e pessoas vêm da aba Dia; você só completa o realizado, as ocorrências e as ações.</p>`;
+  if(!day.producao.length)h+=`<div class="alert blue" style="margin-top:12px">Sem produtos no plano de hoje: as metas por linha ficam zeradas. Adicione os produtos e as quantidades no passo 2 da aba Dia.</div>`;
+  const fT=T.ating==null?null:farol(T.real,T.ref);
+  h+=`<div class="gdkpis"><div class="kpi"><b>${fmtQ(T.meta)}</b><span>meta total do dia (peças)</span></div>
+    <div class="kpi"><b>${fmtQ(T.real)}</b><span>realizado total (peças)</span></div>
+    <div class="kpi ${fT==="ok"?"good":fT?"bad":""}"><b>${fmtPct(T.ating)}</b><span>atingimento${T.parcial?" (até a última hora lançada)":""}</span></div>
+    <div class="kpi"><input type="number" min="0" class="kin" value="${g.risco??""}" placeholder="—" data-act="gdRisco" aria-label="Pedidos em risco"><span>pedidos em risco (do PCP)</span></div></div>`;
+
+  /* 01 + 02 */
+  h+=`<section class="card gdc" style="margin-top:14px"><h3 class="gdh"><i class="n01">01</i>Produção por linha — planejado × realizado</h3>
+  <div class="tablewrap"><table class="gdt"><thead><tr><th>Linha</th><th>Produto / pedido</th><th class="r">Meta</th><th class="r">Realizado</th><th class="r">Desvio</th><th>Status</th><th>Principal desvio / observação</th></tr></thead><tbody>
+  ${Ls.map(L=>{const mt=m[L]||0,r=realLinha(day,L),sh=somaHora(day,L),mr=metaRef(day,L),f=farol(r,mr.meta);
+    return `<tr><td><b>${esc(L)}</b></td><td class="small">${esc((p[L]||[]).join(" + ")||"—")}</td><td class="r">${fmtQ(mt)}</td>
+    <td class="r"><input type="number" min="0" class="qin" value="${g.real[L]??""}" placeholder="${sh!=null?fmtQ(sh):"—"}" data-act="gdReal" data-l="${esc(L)}" aria-label="Realizado ${esc(L)}"></td>
+    <td class="r ${r!=null&&r-mr.meta<0?"neg":""}">${r==null?"—":(r-mr.meta>0?"+":"")+fmtQ(r-mr.meta)}${mr.ate?`<div class="small muted">até ${mr.ate}</div>`:""}</td><td>${farolTag(f)}</td>
+    <td><input type="text" class="tin" value="${esc(g.obs[L]||"")}" placeholder="${f==="red"||f==="amb"?"Escreva o motivo":""}" data-act="gdObs" data-l="${esc(L)}" aria-label="Observação ${esc(L)}"></td></tr>`}).join("")}
+  <tr class="tot"><td><b>Total ${esc(S.settings.empresa||"")}</b></td><td>—</td><td class="r"><b>${fmtQ(T.meta)}</b></td><td class="r"><b>${fmtQ(T.real)}</b></td><td class="r ${T.real!=null&&T.real-T.ref<0?"neg":""}"><b>${T.real==null?"—":(T.real-T.ref>0?"+":"")+fmtQ(T.real-T.ref)}</b></td><td>${farolTag(fT)}</td><td></td></tr>
+  </tbody></table></div>
+  <p class="small muted" style="margin:6px 0 0">Status: verde com ${S.settings.gdVerde??100}% da meta ou mais, amarelo de ${S.settings.gdAmarelo??90}% até abaixo disso, vermelho abaixo de ${S.settings.gdAmarelo??90}% (mude em Ajustes). Todo vermelho precisa de motivo escrito.</p>`;
+  /* hora a hora */
+  const LH=gdHoraL&&Ls.includes(gdHoraL)?gdHoraL:(Ls.find(L=>/4/.test(L))||Ls[0]);
+  if(LH){
+    const sl=slotsHora(),tot=sl.reduce((s,x)=>s+x.h,0),mt=m[LH]||0,hr=g.hora[LH]||{};let am=0,ar=0,seq=0,alerta=false;
+    h+=`<details class="hora" ${Object.keys(hr).length?"open":""}><summary>Detalhe hora a hora <span class="muted small">(quadro complementar da linha)</span></summary>
+    <div class="row small" style="margin:8px 0"><span class="muted">Linha</span><select data-act="gdHoraL">${Ls.map(L=>`<option ${L===LH?"selected":""}>${esc(L)}</option>`).join("")}</select><span class="muted">A soma das horas preenche o realizado da linha quando ele está em branco.</span></div>
+    <div class="tablewrap"><table class="gdt"><thead><tr><th>Hora</th><th class="r">Meta</th><th class="r">Real</th><th class="r">Meta acum.</th><th class="r">Real acum.</th><th class="r">Dif. acum.</th></tr></thead><tbody>
+    ${sl.map((s,i)=>{const mh=tot?mt*s.h/tot:0;am+=mh;const rv=numOrNull(hr[i]);let dif=null;if(rv!=null){ar+=rv;dif=ar-am;seq=dif<=-10?seq+1:0;if(seq>=2)alerta=true}
+      return `<tr><td>${hhmm(s.a)}–${hhmm(s.b)}</td><td class="r">${fmtQ(mh)}</td><td class="r"><input type="number" min="0" class="qin" value="${hr[i]??""}" data-act="gdHora" data-l="${esc(LH)}" data-i="${i}" aria-label="Real ${hhmm(s.a)}"></td><td class="r">${fmtQ(am)}</td><td class="r">${rv==null?"—":fmtQ(ar)}</td><td class="r ${dif!=null&&dif<0?"neg":""}">${dif==null?"—":(dif>0?"+":"")+fmtQ(dif)}</td></tr>`}).join("")}
+    </tbody></table></div>${alerta?`<div class="alert red" style="margin-top:8px">Diferença acumulada de −10 peças ou pior em duas horas seguidas: a líder vai ao posto agora e registra a restrição no bloco 03.</div>`:""}</details>`;
+  }
+  h+=`</section>`;
+
+  h+=`<div class="gdgrid">`;
+  /* 05 pessoas */
+  h+=`<section class="card gdc"><h3 class="gdh"><i class="n05">05</i>Pessoas e cobertura dos postos <span class="auto">automático</span></h3>
+    <div class="gdline"><b>${pe.pres}</b>/${pe.total} presentes · <b>${pe.aus}</b> ausência(s)${pe.parc?` · <b>${pe.parc}</b> parcial(is)`:""} · <b>${pe.rem}</b> remanejamento(s)</div>
+    ${pe.ausNomes.length?`<div class="small muted">Ausentes: ${esc(pe.ausNomes.join(", "))}</div>`:""}
+    <div class="gdline"><span class="muted">Postos sem cobertura:</span> ${pe.desc.length?`<b class="neg">${esc(pe.desc.join(", "))}</b>`:"nenhum"}</div>
+    <div class="gdline"><span class="muted">Pessoa não apta (nível 50):</span> ${pe.fraco.length?esc(pe.fraco.join("; ")):"nenhuma"}</div>
+    <div class="gdline"><span class="muted">Treinamento ou apoio:</span> ${pe.treino.length?esc(pe.treino.slice(0,4).join("; ")):"nada pendente nos postos de hoje"}</div>
+    <button class="btn sm" data-act="goto" data-tab="dia" style="margin-top:6px">Ver a escala no Dia</button></section>`;
+  /* 04 qualidade */
+  const qi=(f,lab,w)=>`<label class="qf"><span>${lab}</span><input type="${w==="n"?"number":"text"}" ${w==="n"?'min="0"':""} value="${esc(g.q[f]??"")}" data-act="gdQ" data-f="${f}"></label>`;
+  h+=`<section class="card gdc"><h3 class="gdh"><i class="n04">04</i>Qualidade, máquinas e materiais</h3>
+    <div class="qgrid"><div><b class="qt">Qualidade</b>${qi("nc","Não conformes","n")}${qi("retrab","Retrabalho","n")}${qi("ocorr","Ocorrência / produto")}${qi("acaoImed","Ação imediata")}</div>
+    <div><b class="qt">Disponibilidade</b>${qi("paradas","Paradas (min)","n")}${qi("maquinas","Máquinas","n")}${qi("faltaMat","Falta de material")}${qi("manut","Manutenção / apoio solicitado")}</div></div></section>`;
+  /* 06 apoio */
+  h+=`<section class="card gdc"><h3 class="gdh"><i class="n06">06</i>Áreas de apoio</h3><div class="tablewrap"><table class="gdt"><thead><tr><th>Área</th><th>Necessidade / status</th><th>Responsável</th><th>Prazo</th></tr></thead><tbody>
+    ${AREAS_APOIO.map(A=>{const v=g.apoio[A]||{};return `<tr><td><b>${A}</b></td><td><input type="text" class="tin" value="${esc(v.nec||"")}" data-act="gdApoio" data-a="${A}" data-f="nec"></td><td><input type="text" class="tin" style="min-width:90px" value="${esc(v.resp||"")}" data-act="gdApoio" data-a="${A}" data-f="resp"></td><td><input type="date" value="${v.prazo||""}" data-act="gdApoio" data-a="${A}" data-f="prazo"></td></tr>`}).join("")}
+    </tbody></table></div></section>`;
+  /* 03 restrições */
+  const areas=[...Ls,...AREAS_APOIO,"Qualidade","Manutenção","Material"];
+  h+=`<section class="card gdc"><h3 class="gdh"><i class="n03">03</i>Problemas e restrições do dia</h3>
+    ${g.restr.length?`<div class="tablewrap"><table class="gdt"><thead><tr><th>Linha / área</th><th>Problema identificado</th><th>Impacto</th><th>Apoio necessário</th><th></th></tr></thead><tbody>
+    ${g.restr.map((r,i)=>`<tr><td><select data-act="gdR" data-i="${i}" data-f="area">${areas.map(a=>`<option ${a===r.area?"selected":""}>${esc(a)}</option>`).join("")}</select></td>
+      <td><input type="text" class="tin" value="${esc(r.prob||"")}" data-act="gdR" data-i="${i}" data-f="prob"></td><td><input type="text" class="tin" style="min-width:90px" value="${esc(r.imp||"")}" data-act="gdR" data-i="${i}" data-f="imp"></td>
+      <td><input type="text" class="tin" value="${esc(r.apoio||"")}" data-act="gdR" data-i="${i}" data-f="apoio"></td>
+      <td style="white-space:nowrap">${r.acaoId?`<span class="tag ok">virou ação</span>`:`<button class="btn sm" data-act="gdRAcao" data-i="${i}">Virar ação</button>`} <button class="btn sm danger" data-act="gdRDel" data-i="${i}" aria-label="Remover">×</button></td></tr>`).join("")}
+    </tbody></table></div>`:`<p class="small muted">Nenhuma restrição registrada hoje.</p>`}
+    <button class="btn sm" data-act="gdRAdd" style="margin-top:8px">Adicionar restrição</button></section>`;
+  h+=`</div>`;
+  /* 07 plano de ação */
+  const conc=(S.acoes||[]).filter(a=>a.status==="Concluída").slice(-8).reverse();
+  const rowA=a=>`<tr class="${acaoVencida(a)?"venc":""}"><td><input type="text" class="tin" value="${esc(a.prob||"")}" data-act="acF" data-id="${a.id}" data-f="prob"></td>
+    <td><input type="text" class="tin" value="${esc(a.acao||"")}" data-act="acF" data-id="${a.id}" data-f="acao"></td>
+    <td><input type="text" class="tin" style="min-width:90px" value="${esc(a.resp||"")}" data-act="acF" data-id="${a.id}" data-f="resp"></td>
+    <td><input type="date" value="${a.prazo||""}" data-act="acF" data-id="${a.id}" data-f="prazo">${acaoVencida(a)?`<div class="tag red" style="margin-top:3px">vencida</div>`:""}</td>
+    <td><select data-act="acF" data-id="${a.id}" data-f="status">${ST_ACAO.map(s=>`<option ${s===a.status?"selected":""}>${s}</option>`).join("")}</select></td>
+    <td><button class="btn sm danger" data-act="acDel" data-id="${a.id}" aria-label="Excluir ação">×</button></td></tr>`;
+  h+=`<section class="card gdc" style="margin-top:14px"><h3 class="gdh"><i class="n07">07</i>Plano de ação <span class="muted small" style="font-weight:500">${ab.length} aberta(s)${venc?` · <b class="neg">${venc} vencida(s)</b>`:""}</span></h3>
+    <p class="small muted" style="margin:0 0 6px">As ações abertas continuam aqui nos dias seguintes até serem concluídas.</p>
+    <div class="tablewrap"><table class="gdt"><thead><tr><th>Problema / desvio</th><th>Ação</th><th>Responsável</th><th>Prazo</th><th>Status</th><th></th></tr></thead><tbody>${ab.map(rowA).join("")||`<tr><td colspan="6" class="small muted">Nenhuma ação aberta.</td></tr>`}</tbody></table></div>
+    <button class="btn sm" data-act="acAdd" style="margin-top:8px">Nova ação</button>
+    ${conc.length?`<details style="margin-top:10px"><summary class="small" style="cursor:pointer;font-weight:600">Concluídas recentemente (${conc.length})</summary><div class="tablewrap"><table class="gdt"><tbody>${conc.map(rowA).join("")}</tbody></table></div></details>`:""}</section>`;
+  /* 08 semana */
+  const sem=semanaDe(curDate),DN=["Segunda","Terça","Quarta","Quinta","Sexta"];
+  h+=`<section class="card gdc" style="margin-top:14px"><h3 class="gdh"><i class="n08">08</i>Acompanhamento semanal — produção e entrega</h3><div class="tablewrap"><table class="gdt"><thead><tr><th>Dia</th><th>Foco / programação</th><th class="r">Planejado</th><th class="r">Realizado</th><th class="r">Saldo</th><th>Status</th></tr></thead><tbody>
+    ${sem.map((iso,i)=>{const d=diaSemana(iso),t=d?totaisGD(d):null,f=t&&t.real!=null?farol(t.real,t.ref):null;
+      return `<tr class="${iso===curDate?"hoje":""} ${i===3?"quinta":""}"><td><b>${DN[i]}</b> <span class="muted small">${fmtDate(iso).slice(0,5)}</span></td><td class="small">${FOCO_SEM[i]}</td><td class="r">${t&&t.meta?fmtQ(t.meta):"—"}</td><td class="r">${t?fmtQ(t.real):"—"}</td><td class="r ${t&&t.real!=null&&t.real-t.ref<0?"neg":""}">${t&&t.real!=null?(t.real-t.ref>0?"+":"")+fmtQ(t.real-t.ref):"—"}${t&&t.parcial?`<div class="small muted">parcial</div>`:""}</td><td>${t&&t.real!=null?farolTag(f):""}</td></tr>`}).join("")}
+    </tbody></table></div></section>`;
+  return h;
+}
+
+/* ---------- modo reunião (10 min, 4 itens do rodapé do quadro) ---------- */
+let reu=null;
+function reuniao(step){
+  if(!reu)reu={i:0,t0:Date.now()};if(step!=null)reu.i=step;
+  const segs=escala(),g=gdOf(day),pe=gdPessoas(segs),{m,p}=metasLinha(day),Ls=linhasGD(day);
+  const PASSOS=[["Resultado","3 min"],["Programação","2 min"],["Restrições","3 min"],["Ações e responsáveis","2 min"]];
+  let body="";
+  if(reu.i===0){const d0=diaAnterior();
+    if(!d0)body=`<p class="muted">Não há dia anterior registrado. Comece pela programação de hoje.</p>`;
+    else{const t=totaisGD(d0),mm=metasLinha(d0).m;body=`<p class="small muted">Resultado de ${fmtDate(d0.data)}. Todo vermelho tem motivo.</p><table class="gdt big"><thead><tr><th>Linha</th><th class="r">Meta</th><th class="r">Real</th><th class="r">%</th><th>Status</th><th>Motivo</th></tr></thead><tbody>
+      ${linhasGD(d0).map(L=>{const r=realLinha(d0,L),mt=mm[L]||0,f=farol(r,metaRef(d0,L).meta);return `<tr><td><b>${esc(L)}</b></td><td class="r">${fmtQ(mt)}</td><td class="r">${fmtQ(r)}</td><td class="r">${r!=null&&mt?fmtPct(r/mt):"—"}</td><td>${farolTag(f)}</td><td class="small">${esc(gdOf(d0).obs[L]||(f==="red"?"sem motivo escrito":""))}</td></tr>`}).join("")}
+      <tr class="tot"><td><b>Total</b></td><td class="r"><b>${fmtQ(t.meta)}</b></td><td class="r"><b>${fmtQ(t.real)}</b></td><td class="r"><b>${fmtPct(t.ating)}</b></td><td>${farolTag(t.real!=null?farol(t.real,t.ref):null)}</td><td></td></tr></tbody></table>`}}
+  if(reu.i===1){body=`<p class="small muted">O que cada linha produz hoje e a meta.</p><table class="gdt big"><thead><tr><th>Linha</th><th>Produto</th><th class="r">Meta</th></tr></thead><tbody>
+    ${Ls.map(L=>`<tr><td><b>${esc(L)}</b></td><td>${esc((p[L]||[]).join(" + ")||"—")}</td><td class="r">${fmtQ(m[L]||0)}</td></tr>`).join("")}</tbody></table>
+    <p style="margin-top:10px">Pedidos em risco no PCP: <b>${g.risco??"—"}</b>${semanaDe(curDate)[3]===curDate?" · <b>Hoje é dia de entrega.</b>":""}</p>`}
+  if(reu.i===2){const q=g.q;body=`<div class="gdline"><b>${pe.pres}</b>/${pe.total} presentes · <b>${pe.aus}</b> ausência(s) · <b>${pe.rem}</b> remanejamento(s)</div>
+    <div class="gdline">Postos sem cobertura: ${pe.desc.length?`<b class="neg">${esc(pe.desc.join(", "))}</b>`:"nenhum"}</div>
+    <div class="gdline">Nível 50 hoje: ${pe.fraco.length?esc(pe.fraco.join("; ")):"nenhum"}</div>
+    ${g.restr.length?`<h4 style="margin:12px 0 4px">Restrições registradas</h4><ul>${g.restr.map(r=>`<li><b>${esc(r.area||"")}</b>: ${esc(r.prob||"")}${r.apoio?` · apoio: ${esc(r.apoio)}`:""}</li>`).join("")}</ul>`:`<p class="muted small" style="margin-top:10px">Nenhuma restrição registrada. Pergunte à equipe: falta material, máquina ou gente?</p>`}
+    ${q.faltaMat||q.manut||q.ocorr?`<p class="small">${q.faltaMat?`Falta de material: <b>${esc(q.faltaMat)}</b>. `:""}${q.manut?`Manutenção: <b>${esc(q.manut)}</b>. `:""}${q.ocorr?`Qualidade: <b>${esc(q.ocorr)}</b>.`:""}</p>`:""}`}
+  if(reu.i===3){const ab=acoesAbertas();body=ab.length?`<table class="gdt big"><thead><tr><th>Ação</th><th>Responsável</th><th>Prazo</th><th>Status</th></tr></thead><tbody>${ab.map(a=>`<tr class="${acaoVencida(a)?"venc":""}"><td><b>${esc(a.acao||a.prob||"—")}</b>${a.prob&&a.acao?`<br><span class="small muted">${esc(a.prob)}</span>`:""}</td><td>${esc(a.resp||"—")}</td><td>${a.prazo?fmtDate(a.prazo):"—"}${acaoVencida(a)?` <span class="tag red">vencida</span>`:""}</td><td>${esc(a.status)}</td></tr>`).join("")}</tbody></table>
+    <p class="small muted" style="margin-top:8px">Ação vencida: decida na hora se ganha novo prazo ou se escala para a direção.</p>`:`<p class="muted">Nenhuma ação aberta.</p>`}
+  const root=document.getElementById("modalRoot");
+  root.innerHTML=`<div class="modal-bg" role="dialog" aria-modal="true" aria-label="Reunião diária"><div class="modal reu">
+    <div class="reutop"><span class="small muted">Reunião diária · ${fmtDate(curDate)}</span><span class="reutime" id="reuT">10:00</span></div>
+    <div class="reusteps">${PASSOS.map((x,i)=>`<button class="${i===reu.i?"on":i<reu.i?"done":""}" data-r="${i}"><i>${i+1}</i>${x[0]}</button>`).join("")}</div>
+    <h3 style="font-size:24px;margin:10px 0 2px">${reu.i+1}. ${PASSOS[reu.i][0]}</h3><p class="small muted" style="margin:0 0 8px">Tempo sugerido: ${PASSOS[reu.i][1]}</p>
+    <div class="reubody">${body}</div>
+    <div class="row" style="justify-content:space-between;margin-top:14px"><button class="btn" data-r="close">Encerrar</button>
+    <span class="row">${reu.i>0?`<button class="btn" data-r="${reu.i-1}">Voltar</button>`:""}${reu.i<3?`<button class="btn primary" data-r="${reu.i+1}">Próximo</button>`:`<button class="btn primary" data-r="close">Concluir reunião</button>`}</span></div></div></div>`;
+  root.onclick=e=>{const b=e.target.closest("[data-r]");if(!b){if(e.target.classList.contains("modal-bg"))fecharReu();return}if(b.dataset.r==="close"){fecharReu();if(reu==null&&b.textContent.includes("Concluir"))toast("Reunião concluída.");return}reuniao(Number(b.dataset.r))};
+  clearInterval(reuniao._t);
+  const tick=()=>{const el=document.getElementById("reuT");if(!el||!reu){clearInterval(reuniao._t);return}const s=Math.round(600-(Date.now()-reu.t0)/1000),a=Math.abs(s);el.textContent=(s<0?"−":"")+Math.floor(a/60)+":"+String(a%60).padStart(2,"0");el.classList.toggle("over",s<0)};
+  tick();reuniao._t=setInterval(tick,1000);
+}
+function fecharReu(){clearInterval(reuniao._t);reu=null;document.getElementById("modalRoot").innerHTML="";document.getElementById("modalRoot").onclick=null}
+
+/* ---------- folha A3 (mesmo layout do modelo em papel) ---------- */
+function gdFolhaHTML(){
+  const segs=escala(),g=gdOf(day),{m,p}=metasLinha(day),Ls=linhasGD(day),T=totaisGD(day),pe=gdPessoas(segs),ab=acoesAbertas();
+  const L_=(v,w)=>v!=null&&v!==""?esc(String(v)):`<span class="ln" style="min-width:${w||60}px"></span>`;
+  const bol=f=>`<span class="bolas"><i class="g ${f==="ok"?"on":""}"></i><i class="y ${f==="amb"?"on":""}"></i><i class="r ${f==="red"?"on":""}"></i></span>`;
+  const sem=semanaDe(curDate),DN=["Segunda","Terça","Quarta","Quinta","Sexta"];
+  const pad=(arr,n)=>{const a=arr.slice(0,n);while(a.length<n)a.push(null);return a};
+  const q=g.q;
+  return `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><title>GD ${fmtDate(curDate)} — ${esc(S.settings.empresa)}</title>
+<style>
+@page{size:A3 landscape;margin:8mm}
+*{box-sizing:border-box}body{margin:0;font-family:Archivo,Arial,Helvetica,sans-serif;color:#18233A;font-size:10.5pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.top{background:#1A3159;color:#fff;padding:8px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:3px dashed #E8B53A}
+.top h1{margin:0;font-size:22pt;letter-spacing:.02em}.top small{display:block;font-size:9pt;opacity:.85}.top .dt{text-align:right;font-size:11pt}
+.kp{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:8px 0}.kp div{border:1px solid #C9D3E1;border-radius:6px;padding:5px 10px}.kp span{font-size:8pt;font-weight:700;color:#5C6880;display:block}.kp b{font-size:18pt}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.bx{border:1px solid #C9D3E1;border-radius:6px;overflow:hidden;margin-bottom:8px;break-inside:avoid}
+.bx h2{margin:0;font-size:10.5pt;color:#fff;padding:4px 10px}
+.c1{background:#1F3A68}.c2{background:#0F766E}.c3{background:#C2412D}.c4{background:#D97706}.c5{background:#2F5590}.c6{background:#0F766E}.c7{background:#C2412D}.c8{background:#18233A}
+table{width:100%;border-collapse:collapse;font-size:9.5pt}th{background:#EDF1F6;font-size:8pt;text-align:left;padding:3px 6px}td{border-top:1px solid #E1E6EE;padding:4px 6px;height:26px}
+td.r,th.r{text-align:right}.ln{display:inline-block;border-bottom:1px solid #8A95A8;height:12px;vertical-align:bottom}
+.bolas i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:3px;border:1.5px solid}.bolas .g{border-color:#21825A}.bolas .y{border-color:#D9A21B}.bolas .r{border-color:#C2412D}
+.bolas .g.on{background:#21825A}.bolas .y.on{background:#D9A21B}.bolas .r.on{background:#C2412D}
+.pad{padding:8px 10px;line-height:2}.two{display:grid;grid-template-columns:1fr 1fr}.two>div{padding:8px 10px;line-height:2}.two b.t{color:#D97706}
+.neg{color:#C2412D;font-weight:700}.qta{background:#FBF0D3}
+.foot{background:#1A3159;color:#fff;text-align:center;padding:6px;font-weight:700;border-radius:6px}.leg{text-align:center;font-size:8pt;color:#5C6880;margin-top:4px}
+</style></head><body>
+<div class="top"><div><h1>GERENCIAMENTO DIÁRIO | ${esc((S.settings.empresa||"").toUpperCase())}</h1><small>VISÃO INTEGRADA • ${Ls.length} LINHAS DE PRODUÇÃO • ÁREAS DE APOIO</small></div>
+<div class="dt">DATA: <b>${fmtDate(curDate)}</b><br>LÍDER / RESPONSÁVEL: <span class="ln" style="min-width:160px;border-color:#fff"></span></div></div>
+<div class="kp"><div><span>META TOTAL DO DIA</span><b>${fmtQ(T.meta)}</b> peças</div><div><span>REALIZADO TOTAL</span><b>${T.real!=null?fmtQ(T.real):"<span class='ln' style='min-width:90px'></span>"}</b> peças</div><div><span>ATINGIMENTO</span><b>${T.ating!=null?fmtPct(T.ating):"<span class='ln' style='min-width:70px'></span>"}</b></div><div><span>PEDIDOS EM RISCO</span><b>${L_(g.risco,70)}</b></div></div>
+<div class="cols"><div>
+<div class="bx"><h2 class="c1">01 | PRODUÇÃO POR LINHA — PLANEJADO X REALIZADO</h2><table><tr><th>LINHA / FAMÍLIA</th><th>PRODUTO / PEDIDO</th><th class="r">META</th><th class="r">REALIZADO</th><th class="r">DESVIO</th></tr>
+${Ls.map(L=>{const r=realLinha(day,L),mt=m[L]||0,mr=metaRef(day,L);return `<tr><td><b>${esc(L.toUpperCase())}</b></td><td>${esc((p[L]||[]).join(" + "))||L_(null,120)}</td><td class="r">${fmtQ(mt)}</td><td class="r">${L_(r!=null?fmtQ(r)+(mr.ate?" (até "+mr.ate+")":""):null,50)}</td><td class="r ${r!=null&&r-mr.meta<0?"neg":""}">${r!=null?fmtQ(r-mr.meta):L_(null,40)}</td></tr>`}).join("")}
+<tr><td><b>TOTAL</b></td><td>—</td><td class="r"><b>${fmtQ(T.meta)}</b></td><td class="r">${L_(T.real!=null?fmtQ(T.real):null,50)}</td><td class="r">${T.real!=null?fmtQ(T.real-T.ref):L_(null,40)}</td></tr></table></div>
+<div class="bx"><h2 class="c2">02 | ACOMPANHAMENTO DO DIA POR LINHA</h2><table><tr><th>LINHA</th><th class="r">META DO DIA</th><th class="r">ACUMULADO</th><th>STATUS</th><th>PRINCIPAL DESVIO / OBSERVAÇÃO</th></tr>
+${Ls.map(L=>{const r=realLinha(day,L),mt=m[L]||0;return `<tr><td><b>${esc(L.toUpperCase())}</b></td><td class="r">${fmtQ(mt)}</td><td class="r">${L_(r!=null?fmtQ(r):null,50)}</td><td>${bol(farol(r,metaRef(day,L).meta))}</td><td>${L_(g.obs[L],200)}</td></tr>`}).join("")}</table></div>
+<div class="bx"><h2 class="c3">03 | PROBLEMAS E RESTRIÇÕES DO DIA</h2><table><tr><th>LINHA / ÁREA</th><th>PROBLEMA IDENTIFICADO</th><th>IMPACTO</th><th>APOIO NECESSÁRIO</th></tr>
+${pad(g.restr,4).map(r=>`<tr><td>${L_(r&&r.area,70)}</td><td>${L_(r&&r.prob,160)}</td><td>${L_(r&&r.imp,60)}</td><td>${L_(r&&r.apoio,110)}</td></tr>`).join("")}</table></div>
+</div><div>
+<div class="bx"><h2 class="c4">04 | QUALIDADE, MÁQUINAS E MATERIAIS</h2><div class="two"><div><b class="t">QUALIDADE</b><br>Não conformes: ${L_(q.nc,40)} &nbsp; Retrabalho: ${L_(q.retrab,40)}<br>Ocorrência / produto: ${L_(q.ocorr,150)}<br>Ação imediata: ${L_(q.acaoImed,170)}</div>
+<div><b class="t">DISPONIBILIDADE</b><br>Paradas (min): ${L_(q.paradas,40)} &nbsp; Máquinas: ${L_(q.maquinas,40)}<br>Falta de material: ${L_(q.faltaMat,150)}<br>Manutenção / apoio solicitado: ${L_(q.manut,110)}</div></div></div>
+<div class="bx"><h2 class="c5">05 | PESSOAS E COBERTURA DOS POSTOS</h2><div class="pad">Presentes: <b>${pe.pres} / ${pe.total}</b> &nbsp; Ausências: <b>${pe.aus}</b>${pe.ausNomes.length?` (${esc(pe.ausNomes.join(", "))})`:""} &nbsp; Remanejamentos: <b>${pe.rem}</b><br>
+Postos sem cobertura / pessoa não apta: ${[...pe.desc.map(x=>x+" (descoberto)"),...pe.fraco].length?`<b>${esc([...pe.desc.map(x=>x+" (descoberto)"),...pe.fraco].join("; "))}</b>`:"nenhum"}<br>
+Treinamento ou apoio necessário: ${pe.treino.length?esc(pe.treino.slice(0,3).join("; ")):L_(null,220)}</div></div>
+<div class="bx"><h2 class="c6">06 | ÁREAS DE APOIO — CORTE, SILK, ARREMATE E DESVIRAGEM</h2><table><tr><th>ÁREA</th><th>NECESSIDADE / STATUS</th><th>RESPONSÁVEL</th><th>PRAZO</th></tr>
+${AREAS_APOIO.map(A=>{const v=g.apoio[A]||{};return `<tr><td><b>${A.toUpperCase()}</b></td><td>${L_(v.nec,160)}</td><td>${L_(v.resp,80)}</td><td>${L_(v.prazo?fmtDate(v.prazo).slice(0,5):null,40)}</td></tr>`}).join("")}</table></div>
+<div class="bx"><h2 class="c7">07 | PLANO DE AÇÃO</h2><table><tr><th>PROBLEMA / DESVIO</th><th>AÇÃO</th><th>RESPONSÁVEL</th><th>PRAZO</th><th>STATUS</th></tr>
+${pad(ab,5).map(a=>`<tr${a&&acaoVencida(a)?' class="qta"':""}><td>${L_(a&&a.prob,110)}</td><td>${L_(a&&a.acao,110)}</td><td>${L_(a&&a.resp,70)}</td><td>${L_(a&&a.prazo?fmtDate(a.prazo).slice(0,5):null,40)}</td><td>${L_(a&&(acaoVencida(a)?"VENCIDA":a.status),50)}</td></tr>`).join("")}</table></div>
+</div></div>
+<div class="bx"><h2 class="c8">08 | ACOMPANHAMENTO SEMANAL — PRODUÇÃO E ENTREGA</h2><table><tr><th>DIA</th><th>FOCO / PROGRAMAÇÃO</th><th class="r">PLANEJADO</th><th class="r">REALIZADO</th><th>SALDO / OBSERVAÇÃO</th></tr>
+${sem.map((iso,i)=>{const d=diaSemana(iso),t=d?totaisGD(d):null;return `<tr${i===3?' class="qta"':""}><td><b>${DN[i].toUpperCase()}</b> ${fmtDate(iso).slice(0,5)}</td><td>${FOCO_SEM[i]}</td><td class="r">${t&&t.meta?fmtQ(t.meta):L_(null,50)}</td><td class="r">${t&&t.real!=null?fmtQ(t.real):L_(null,50)}</td><td>${t&&t.real!=null?fmtQ(t.real-t.meta):L_(null,160)}</td></tr>`}).join("")}</table></div>
+<div class="foot">REUNIÃO DIÁRIA • 10 MINUTOS &nbsp;|&nbsp; 1. Resultado &nbsp;2. Programação &nbsp;3. Restrições &nbsp;4. Ações e responsáveis</div>
+<div class="leg">STATUS: VERDE = ${S.settings.gdVerde??100}% da meta ou mais &nbsp;|&nbsp; AMARELO = atenção / risco &nbsp;|&nbsp; VERMELHO = abaixo de ${S.settings.gdAmarelo??90}%, exige ação · Gerado pelo app Escala da Costura em ${new Date().toLocaleString("pt-BR",{dateStyle:"short",timeStyle:"short"})}</div>
+</body></html>`;
+}
+async function imprimirGD(){
+  const html=gdFolhaHTML(),fn=`GD_${(S.settings.empresa||"vicon").toLowerCase()}_${curDate}.html`;
+  let dl=null;try{if(window.claude&&window.claude.use)dl=await window.claude.use("downloads")}catch(e){}
+  if(dl){try{const r=await dl.save({filename:fn,data:new Blob([html],{type:"text/html"})});if(r&&r.status==="saved")toast("Quadro baixado. Abra o arquivo e imprima em A3 deitado.")}catch(e){if(e.code!=="cancelled"&&e.code!=="declined")toast("Não foi possível baixar: "+(e.message||e.code))}return}
+  const f=document.createElement("iframe");f.style.cssText="position:fixed;right:0;bottom:0;width:0;height:0;border:0";document.body.appendChild(f);
+  f.srcdoc=html;f.onload=()=>{try{f.contentWindow.focus();f.contentWindow.print()}catch(e){toast("A impressão foi bloqueada neste navegador.")}setTimeout(()=>f.remove(),60000)};
+}
+
 /* ============================ SAÚDE DA MATRIZ ============================ */
 function saudeMatriz(){
   const at=ativos(),out=[];
@@ -987,7 +1278,7 @@ function render(){
   document.querySelectorAll("#tabs button,#bnav button").forEach(b=>b.setAttribute("aria-selected",b.dataset.tab===tab?"true":"false"));
   const app=document.getElementById("app");
   if(!S.postos.length&&tab!=="ajustes"&&tab!=="matriz"){app.innerHTML=emptyState();return}
-  app.innerHTML=({dia:viewDia,assiduidade:viewRank,produtos:viewProdutos,matriz:viewMatriz,ajustes:viewAjustes}[tab])();
+  app.innerHTML=({dia:viewDia,gd:viewGD,assiduidade:viewRank,produtos:viewProdutos,matriz:viewMatriz,ajustes:viewAjustes}[tab])();
 }
 function emptyState(){
   return `<div class="empty card" style="margin-top:24px"><div class="emptyart">${ic("carretel")}</div><h2>Comece pela matriz de versatilidade</h2>
@@ -1332,6 +1623,7 @@ function viewAjustes(){
     <div class="row"><div class="field"><label>Início do turno</label><input type="time" value="${s.inicio}" data-act="set" data-f="inicio"></div><div class="field"><label>Fim do turno</label><input type="time" value="${s.fim}" data-act="set" data-f="fim"></div></div>
     <div class="row"><div class="field"><label>Almoço de</label><input type="time" value="${s.almIni}" data-act="set" data-f="almIni"></div><div class="field"><label>até</label><input type="time" value="${s.almFim}" data-act="set" data-f="almFim"></div></div>
     <p class="small muted">Jornada útil calculada: <b>${fmtH(turnoH())}</b> por pessoa.</p>
+    <div class="row" style="margin-top:6px"><div class="field"><label>GD: verde a partir de (% da meta)</label><input type="number" min="0" max="200" value="${s.gdVerde??100}" data-act="setGD" data-f="gdVerde"></div><div class="field"><label>Amarelo a partir de (%)</label><input type="number" min="0" max="200" value="${s.gdAmarelo??90}" data-act="setGD" data-f="gdAmarelo"></div></div>
     <label class="row small"><input type="checkbox" data-act="setCJ" ${s.contarJustificadas?"checked":""}> Faltas justificadas também penalizam no ranking</label></div>
   <div class="card" style="grid-column:1/-1"><h3 style="font-size:20px;margin-bottom:10px">Relatório por e-mail</h3>
     <div class="row" style="align-items:flex-start">
@@ -1360,7 +1652,14 @@ app.addEventListener("click",async e=>{
   const b=e.target.closest("[data-act]");if(!b||b.tagName==="SELECT"||b.tagName==="INPUT")return;
   const a=b.dataset.act,i=Number(b.dataset.i);
   switch(a){
-    case"goto":tab=b.dataset.tab;render();break;
+    case"goto":tab=b.dataset.tab;render();window.scrollTo(0,0);break;
+    case"reuniao":reu=null;reuniao(0);break;
+    case"gdPrint":imprimirGD();break;
+    case"gdRAdd":gdOf(day).restr.push({area:linhasGD(day)[0]||"",prob:"",imp:"",apoio:""});saveDaySoon();render();break;
+    case"gdRDel":gdOf(day).restr.splice(i,1);saveDaySoon();render();break;
+    case"gdRAcao":{const r=gdOf(day).restr[i];const a={id:uid("a"),criado:curDate,prob:(r.area?r.area+": ":"")+(r.prob||""),acao:r.apoio||"",resp:"",prazo:"",status:"Aberta"};S.acoes.push(a);r.acaoId=a.id;saveCfg("acoes");saveDaySoon();render();toast("Ação criada no plano de ação (bloco 07). Defina responsável e prazo.");break}
+    case"acAdd":S.acoes.push({id:uid("a"),criado:curDate,prob:"",acao:"",resp:"",prazo:"",status:"Aberta"});saveCfg("acoes");render();break;
+    case"acDel":confirmBox("Excluir esta ação do plano?","Excluir",()=>{S.acoes=S.acoes.filter(a=>a.id!==b.dataset.id);saveCfg("acoes");render()});break;
     case"allP":ativos().forEach(p=>day.presenca[p.id]={st:"P"});saveDaySoon();render();break;
     case"st":{const p=b.dataset.p,st=b.dataset.st;const cur=day.presenca[p]||{};day.presenca[p]=st==="A"?{st,ent:cur.ent||"",sai:cur.sai||""}:{st};
       if(st==="F"||st==="J")cutPins(x=>x.pid===p,0,24*60);saveDaySoon();render();break}
@@ -1429,6 +1728,16 @@ app.addEventListener("change",e=>{
     case"setCJ":S.settings.contarJustificadas=t.checked;saveCfg("settings");break;
     case"setTxt":S.settings[t.dataset.f]=t.value.trim();saveCfg("settings");break;
     case"setRk":S.settings.emailRanking=t.checked;saveCfg("settings");break;
+    case"setGD":S.settings[t.dataset.f]=Number(t.value)||0;saveCfg("settings");break;
+    case"gdReal":gdOf(day).real[t.dataset.l]=t.value===""?null:Number(t.value);saveDaySoon();render();break;
+    case"gdObs":gdOf(day).obs[t.dataset.l]=t.value;saveDaySoon();break;
+    case"gdHora":{const g=gdOf(day),L=t.dataset.l;g.hora[L]=g.hora[L]||{};if(t.value==="")delete g.hora[L][t.dataset.i];else g.hora[L][t.dataset.i]=Number(t.value);saveDaySoon();render();break}
+    case"gdHoraL":gdHoraL=t.value;render();break;
+    case"gdRisco":gdOf(day).risco=t.value===""?null:Number(t.value);saveDaySoon();break;
+    case"gdQ":gdOf(day).q[t.dataset.f]=t.value;saveDaySoon();break;
+    case"gdApoio":{const g=gdOf(day),A=t.dataset.a;g.apoio[A]=g.apoio[A]||{};g.apoio[A][t.dataset.f]=t.value;saveDaySoon();break}
+    case"gdR":gdOf(day).restr[i][t.dataset.f]=t.value;saveDaySoon();break;
+    case"acF":{const a=S.acoes.find(x=>x.id===t.dataset.id);if(!a)break;a[t.dataset.f]=t.value;if(t.dataset.f==="status"&&t.value==="Concluída")a.concluidaEm=curDate;saveCfg("acoes");if(["status","prazo"].includes(t.dataset.f))render();break}
   }
 });
 app.addEventListener("toggle",e=>{const d=e.target;if(d.matches&&d.matches("details.step"))openSteps[d.dataset.step]=d.open;if(d.id==="saude")saudeOpen=d.open},true);
@@ -1487,7 +1796,9 @@ function dadosRelatorio(){
   let rk=null;if(S.settings.emailRanking!==false){const sv=rankPeriod;rankPeriod="30";rk=rankData().list.slice(0,10);rankPeriod=sv}
   const ritmo=day.producao.map(it=>ritmoItem(it,segs)).filter(x=>x&&x.r.g).map(x=>{const r=x.r;
     return{prod:x.p.nome,hora:`${hhmm(x.a)}–${hhmm(x.b)}`,txt:`takt ${r.takt?fmtMin(r.takt):"—"} · gargalo ${r.g.nome} (${r.g.parado?"sem pessoa":fmtMin(r.g.ciclo)+"/pç"}) · capacidade ${fmtN(r.cap,0)} pç${r.q?` para pedido de ${fmtN(r.q,0)}`:""}`,ruim:!!(r.g.parado||(r.q&&r.cap<r.q))}});
-  return{segs,faltas,parciais,desc,aten,ori,blocos,rk,ritmo,pres:presentes().length};
+  const gdT=totaisGD(day),gdM=metasLinha(day).m;
+  const gd={tot:gdT,linhas:linhasGD(day).map(L=>{const r=realLinha(day,L),mt=gdM[L]||0,mr=metaRef(day,L);return{L,meta:mt,real:r,f:farol(r,mr.meta),ate:mr.ate,obs:gdOf(day).obs[L]||""}}).filter(x=>x.meta||x.real!=null),acoes:acoesAbertas()};
+  return{segs,faltas,parciais,desc,aten,ori,blocos,rk,ritmo,gd,pres:presentes().length};
 }
 function montarRelatorio(op){
   const d=dadosRelatorio();const S0=S.settings;
@@ -1497,6 +1808,8 @@ function montarRelatorio(op){
   let t=`${subject}\n\nRESUMO\nPresentes: ${d.pres} | Faltas: ${d.faltas.length} | Parciais: ${d.parciais.length} | Vagas descobertas: ${d.desc} | Postos com nível 50: ${d.aten}\n`;
   if(d.faltas.length)t+=`Faltas: ${d.faltas.join(", ")}\n`;if(d.parciais.length)t+=`Parciais: ${d.parciais.join(", ")}\n`;
   if(op.ori&&d.ori.length){t+=`\nO QUE FOI FEITO / ATENÇÃO\n`;d.ori.forEach(o=>t+=`- [${o.sev}] ${o.titulo}${o.hora?" ("+o.hora+")":""}: ${o.txt}\n`)}
+  if(d.gd.linhas.length){t+=`\nGESTÃO DIÁRIA\nMeta ${fmtQ(d.gd.tot.meta)} | Realizado ${fmtQ(d.gd.tot.real)} | Atingimento ${fmtPct(d.gd.tot.ating)}\n`;d.gd.linhas.forEach(x=>t+=`- ${x.L}: ${fmtQ(x.real)} de ${fmtQ(x.meta)}${x.ate?" (parcial até "+x.ate+")":""}${x.f?" ("+FAROL_TXT[x.f]+")":""}${x.obs?" · "+x.obs:""}\n`)}
+  if(d.gd.acoes.length){t+=`\nAÇÕES ABERTAS\n`;d.gd.acoes.forEach(a=>t+=`- ${a.acao||a.prob} · ${a.resp||"sem responsável"} · ${a.prazo?fmtDate(a.prazo):"sem prazo"}${acaoVencida(a)?" (VENCIDA)":""}\n`)}
   if(d.ritmo.length){t+=`\nRITMO E GARGALO\n`;d.ritmo.forEach(x=>t+=`- ${x.ruim?"[NÃO ATENDE] ":""}${x.prod} (${x.hora}): ${x.txt}\n`)}
   if(op.esc){d.blocos.forEach(b=>{t+=`\nESCALA ${b.hora} — ${b.prods}\n`;b.linhas.forEach(l=>{t+=`${l.L}\n`;l.postos.forEach(p=>t+=`  • ${p.posto}: ${p.pessoas.length?p.pessoas.map(x=>x.nome).join(" + "):"DESCOBERTO"}${p.falta&&p.pessoas.length?" (falta "+p.falta+")":""}\n`)});if(b.livres.length)t+=`Livres/apoio: ${b.livres.join(", ")}\n`})}
   if(op.rk&&d.rk&&d.rk.length){t+=`\nRANKING DE ASSIDUIDADE (30 dias)\n`;d.rk.forEach((o,i)=>t+=`${i+1}. ${o.p.nome} — ${pct(o.ass)} (${o.oc} ocorrência(s))\n`)}
@@ -1511,6 +1824,9 @@ function montarRelatorio(op){
   <table cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;background:${C.soft}"><tr>${[["Presentes",d.pres,C.ok],["Faltas",d.faltas.length,d.faltas.length?C.bad:C.ink],["Parciais",d.parciais.length,C.ink],["Vagas descobertas",d.desc,d.desc?C.bad:C.ok],["Nível 50",d.aten,d.aten?C.warn:C.ok]].map(([k,v,c])=>`<td style="padding:10px;text-align:center"><div style="font-size:22px;font-weight:bold;color:${c}">${v}</div><div style="font-size:11px;color:#5E6A7E">${k}</div></td>`).join("")}</tr></table>`;
   if(d.faltas.length||d.parciais.length)h+=`<p style="font-size:13px;margin:12px 0">${d.faltas.length?`<b>Faltas:</b> ${esc(d.faltas.join(", "))}<br>`:""}${d.parciais.length?`<b>Parciais:</b> ${esc(d.parciais.join(", "))}`:""}</p>`;
   if(op.ori&&d.ori.length){h+=`<h3 style="font-size:16px;margin:18px 0 6px">O que foi feito / atenção</h3><table cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse">`+d.ori.map(o=>`<tr><td ${td}><span style="display:inline-block;padding:2px 8px;border-radius:10px;color:#fff;background:${sevC(o.sev)};font-size:11px;font-weight:bold">${o.sev}</span></td><td ${td}><b>${esc(o.titulo)}</b>${o.hora?`<br><span style="color:#5E6A7E">${o.hora}</span>`:""}</td><td ${td}>${esc(o.txt)}</td></tr>`).join("")+`</table>`}
+  const fC={ok:C.ok,amb:C.warn,red:C.bad};
+  if(d.gd.linhas.length)h+=`<h3 style="font-size:16px;margin:18px 0 6px">Gestão diária · atingimento ${fmtPct(d.gd.tot.ating)}</h3><table cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse"><tr><td ${td}><b>Linha</b></td><td ${td} style="text-align:right"><b>Meta</b></td><td ${td} style="text-align:right"><b>Real</b></td><td ${td}><b>Status</b></td></tr>`+d.gd.linhas.map(x=>`<tr><td ${td}>${esc(x.L)}${x.obs?`<br><span style="color:#5E6A7E">${esc(x.obs)}</span>`:""}</td><td ${td} style="text-align:right">${fmtQ(x.meta)}</td><td ${td} style="text-align:right">${fmtQ(x.real)}</td><td ${td}>${x.f?`<b style="color:${fC[x.f]}">${FAROL_TXT[x.f]}</b>`:"—"}</td></tr>`).join("")+`</table>`;
+  if(d.gd.acoes.length)h+=`<h3 style="font-size:16px;margin:18px 0 6px">Ações abertas</h3><table cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse">`+d.gd.acoes.map(a=>`<tr><td ${td}>${esc(a.acao||a.prob||"")}</td><td ${td}>${esc(a.resp||"—")}</td><td ${td}>${a.prazo?fmtDate(a.prazo):"—"}${acaoVencida(a)?` <b style="color:${C.bad}">vencida</b>`:""}</td></tr>`).join("")+`</table>`;
   if(d.ritmo.length)h+=`<h3 style="font-size:16px;margin:18px 0 6px">Ritmo e gargalo</h3><table cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse">`+d.ritmo.map(x=>`<tr><td ${td} width="40%"><b>${esc(x.prod)}</b><br><span style="color:#5E6A7E">${x.hora}</span></td><td ${td}>${x.ruim?`<b style="color:${C.bad}">Não atende · </b>`:""}${esc(x.txt)}</td></tr>`).join("")+`</table>`;
   if(op.esc)d.blocos.forEach(b=>{h+=`<h3 style="font-size:16px;margin:18px 0 6px;border-top:3px solid ${C.ink};padding-top:8px">${b.hora} <span style="font-weight:normal;color:#5E6A7E">· ${esc(b.prods)}</span></h3><table cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse">`;
     b.linhas.forEach(l=>{h+=`<tr><td colspan="2" style="padding:8px 8px 4px;font-weight:bold;font-size:13px;color:#2B4B7C">${esc(l.L)}</td></tr>`;l.postos.forEach(p=>h+=`<tr><td ${td} width="45%">${esc(p.posto)}</td><td ${td}>${p.pessoas.length?p.pessoas.map(x=>`<span style="display:inline-block;min-width:26px;text-align:center;border-radius:4px;font-size:11px;font-weight:bold;background:${lvC(x.lv)};color:${x.lv>=100?"#fff":C.ink}">${x.lv}</span> ${esc(x.nome)}`).join("<br>"):`<b style="color:${C.bad}">DESCOBERTO</b>`}${p.falta&&p.pessoas.length?` <span style="color:${C.bad}">(falta ${p.falta})</span>`:""}</td></tr>`)});
@@ -1570,11 +1886,11 @@ function modal(title,body,buttons,onBtn){
   };
 }
 function confirmBox(msg,okText,fn){modal("Confirmar",`<p>${esc(msg)}</p>`,[[okText,"ok"],["Cancelar","cancel"]],k=>{if(k==="ok")fn()})}
-document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("modalRoot").innerHTML=""});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){if(reu)fecharReu();else document.getElementById("modalRoot").innerHTML=""}});
 
 /* ============================ IMPORT / EXPORT ============================ */
 async function exportar(){
-  const data=JSON.stringify({app:"vicon-escala",versao:1,exportadoEm:new Date().toISOString(),settings:S.settings,postos:S.postos,pessoas:S.pessoas,produtos:S.produtos,dias:Object.values(S.dias)},null,1);
+  const data=JSON.stringify({app:"vicon-escala",versao:1,exportadoEm:new Date().toISOString(),settings:S.settings,postos:S.postos,pessoas:S.pessoas,produtos:S.produtos,acoes:S.acoes,dias:Object.values(S.dias)},null,1);
   const filename=`backup_escala_${(S.settings.empresa||"vicon").toLowerCase()}_${todayISO()}.json`;
   let dl=null;try{if(window.claude&&window.claude.use)dl=await window.claude.use("downloads")}catch(e){}
   if(dl){try{const r=await dl.save({filename,data:new Blob([data],{type:"application/json"})});if(r&&r.status==="saved")toast("Backup baixado.");}catch(e){if(e.code!=="cancelled"&&e.code!=="declined")toast("Não foi possível baixar: "+(e.message||e.code))}return}
@@ -1585,8 +1901,8 @@ function importJson(file){
     let d;try{d=JSON.parse(fr.result)}catch(e){toast("Arquivo inválido: não é um backup deste app.");return}
     if(!d||!Array.isArray(d.postos)||!Array.isArray(d.pessoas)){toast("Arquivo inválido: faltam postos ou pessoas.");return}
     confirmBox(`Restaurar o backup de ${d.exportadoEm?fmtDate(d.exportadoEm.slice(0,10)):"data desconhecida"}? A matriz, os produtos e os ${(d.dias||[]).length} dias do arquivo substituem os dados atuais com o mesmo dia.`,"Restaurar",async()=>{
-      S.settings={...DEF_SETTINGS,...(d.settings||{})};S.postos=d.postos;S.pessoas=d.pessoas;S.produtos=d.produtos||[];
-      ["settings","postos","pessoas","produtos"].forEach(saveCfg);
+      S.settings={...DEF_SETTINGS,...(d.settings||{})};S.postos=d.postos;S.pessoas=d.pessoas;S.produtos=d.produtos||[];if(Array.isArray(d.acoes))S.acoes=d.acoes;
+      ["settings","postos","pessoas","produtos","acoes"].forEach(saveCfg);
       for(const dy of d.dias||[]){if(dy&&dy.data){S.dias[dy.data]=dy;try{await store.saveDay(dy)}catch(e){toast("Erro ao salvar o dia "+dy.data);break}}}
       loadDay(curDate);tab="dia";render();toast("Backup restaurado.");
     });
@@ -1640,9 +1956,9 @@ const SEED={"settings": {"empresa": "Vicon", "setor": "Costura", "inicio": "07:0
   try{
     const d=await store.load();
     if(d.settings)S.settings={...DEF_SETTINGS,...d.settings};
-    S.postos=d.postos||[];S.pessoas=d.pessoas||[];S.produtos=d.produtos||[];S.dias=d.dias||{};
+    S.postos=d.postos||[];S.pessoas=d.pessoas||[];S.produtos=d.produtos||[];S.acoes=d.acoes||[];S.dias=d.dias||{};
   }catch(e){
-    if(store.mode==="db"){store=localStore();const d=await store.load();if(d.settings)S.settings={...DEF_SETTINGS,...d.settings};S.postos=d.postos||[];S.pessoas=d.pessoas||[];S.produtos=d.produtos||[];S.dias=d.dias||{};toast("Sem acesso à nuvem agora: usando os dados deste navegador.")}
+    if(store.mode==="db"){store=localStore();const d=await store.load();if(d.settings)S.settings={...DEF_SETTINGS,...d.settings};S.postos=d.postos||[];S.pessoas=d.pessoas||[];S.produtos=d.produtos||[];S.acoes=d.acoes||[];S.dias=d.dias||{};toast("Sem acesso à nuvem agora: usando os dados deste navegador.")}
   }
   if(store.mode==="local"&&!S.postos.length&&!S.pessoas.length){
     S.settings={...DEF_SETTINGS,...SEED.settings};S.postos=clone(SEED.postos);S.pessoas=clone(SEED.pessoas);S.produtos=clone(SEED.produtos);

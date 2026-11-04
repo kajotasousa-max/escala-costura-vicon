@@ -63,7 +63,7 @@ button{cursor:pointer}
 .sc-body{flex:1;padding:14px;font-size:14px;overflow:auto}
 .sc-body h4{margin:0 0 6px;font-size:16px;display:flex;gap:8px;align-items:center}
 .sc-body .ic{width:22px;height:22px;color:var(--denim)}
-.sc-nav{display:grid;grid-template-columns:repeat(5,1fr);background:var(--card);border-top:1px solid var(--line)}
+.sc-nav{display:grid;grid-template-columns:repeat(6,1fr);background:var(--card);border-top:1px solid var(--line)}
 .sc-nav button{border:0;background:transparent;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 0 9px;font-size:10.5px;font-weight:600;color:var(--muted);position:relative}
 .sc-nav button[aria-pressed="true"]{color:var(--denim)}
 .sc-nav button[aria-pressed="true"]::before{content:"";position:absolute;top:0;left:26%;right:26%;border-top:2.5px dashed var(--chalk)}
@@ -253,6 +253,7 @@ footer{max-width:1120px;margin:0 auto;padding:0 20px 40px;color:var(--muted);fon
     <a href="#primeira" data-i="cabide">Primeira vez</a>
     <a href="#rotina" data-i="maquina">Rotina do dia</a>
     <a href="#dia" data-i="carretel">Os 5 passos</a>
+    <a href="#gd" data-i="quadro">Gestão diária</a>
     <a href="#matriz" data-i="alfineteira">Matriz</a>
     <a href="#produtos" data-i="bolsa">Produtos e takt</a>
     <a href="#ranking" data-i="medalha">Assiduidade</a>
@@ -293,16 +294,19 @@ footer{max-width:1120px;margin:0 auto;padding:0 20px 40px;color:var(--muted);fon
   <!-- ROTINA -->
   <section class="sec" id="rotina">
     <div class="sh"><span class="sico" data-i="maquina"></span><h2>Rotina do dia</h2></div>
-    <p class="intro">Leva cerca de 5 minutos no começo do turno. Marque cada item conforme faz; a lista volta a ficar em branco quando você recarrega a página.</p>
+    <p class="intro">Leva cerca de 15 minutos somando o começo e o fim do turno, já com a reunião. Marque cada item conforme faz; a lista volta a ficar em branco quando você recarrega a página.</p>
     <div class="progress" aria-hidden="true"><i id="rotBar"></i></div>
-    <p class="small muted" id="rotTxt" style="margin:0 0 10px">0 de 6 feitos</p>
+    <p class="small muted" id="rotTxt" style="margin:0 0 10px">0 de 9 feitos</p>
     <div class="check" id="rotina-list">
       <label><input type="checkbox"><span><b>Abra a aba Dia e confira a data</b><small>O app já abre no dia de hoje. Para ver outro dia, troque a data no topo.</small></span></label>
       <label><input type="checkbox"><span><b>Passo 1: marque quem faltou ou chegou mais tarde</b><small>Todo mundo começa como Presente. Mude só quem não veio ou veio parcial.</small></span></label>
       <label><input type="checkbox"><span><b>Passo 2: adicione o que será produzido</b><small>Escolha o produto, a quantidade e o horário. Se a linha troca de modelo no meio do dia, adicione o segundo com o novo horário.</small></span></label>
       <label><input type="checkbox"><span><b>Passo 3: leia “O que fazer hoje”</b><small>Para cada falta, o app mostra quem assume. Se tiver opção melhor, toque em Aplicar.</small></span></label>
+      <label><input type="checkbox"><span><b>Faça a reunião de 10 minutos</b><small>Aba GD, botão <em>Iniciar reunião</em>: resultado de ontem, programação, restrições e ações.</small></span></label>
+      <label><input type="checkbox"><span><b>Imprima o quadro do dia e cole na parede</b><small>Aba GD, <em>Imprimir quadro A3</em>. Ao longo do dia, escreva o realizado e os desvios à caneta.</small></span></label>
       <label><input type="checkbox"><span><b>Passo 4: avise a equipe</b><small>Use <em>Texto para o grupo</em> e cole no WhatsApp, ou imprima e deixe no quadro.</small></span></label>
-      <label><input type="checkbox"><span><b>Envie o relatório</b><small>Botão <em>Enviar relatório</em>: vai por e-mail para a supervisão.</small></span></label>
+      <label><input type="checkbox"><span><b>No fim do dia, lance o realizado no GD</b><small>O total de cada linha, o que deu errado e as ações novas. Leva 3 minutos.</small></span></label>
+      <label><input type="checkbox"><span><b>Envie o relatório</b><small>Botão <em>Enviar relatório</em>: vai por e-mail para a supervisão, já com o resumo do GD e as ações abertas.</small></span></label>
     </div>
   </section>
 
@@ -408,6 +412,45 @@ footer{max-width:1120px;margin:0 auto;padding:0 20px 40px;color:var(--muted);fon
     </div>
   </section>
 
+  <!-- GD -->
+  <section class="sec" id="gd">
+    <div class="sh"><span class="sico" data-i="quadro"></span><h2>Gestão diária</h2></div>
+    <p class="intro">A aba GD é o quadro da fábrica inteira: as 4 linhas e as áreas de apoio, no mesmo formato do quadro em papel. Metas, presença e cobertura dos postos vêm prontas da aba Dia; você completa só o resto.</p>
+    <div class="grid2">
+      <div class="card">
+        <h3 style="font-size:19px">Os blocos do quadro</h3>
+        <ol class="steps">
+          <li><div><b>01 Produção por linha</b>A meta de cada linha sai dos produtos e quantidades do passo 2. Digite o <em>Realizado</em>; desvio e status aparecem sozinhos. Todo vermelho precisa de motivo escrito.</div></li>
+          <li><div><b>Detalhe hora a hora</b>Para acompanhar uma linha durante o dia, lance o real de cada hora. O app compara com a meta acumulada até aquela hora e avisa quando a diferença passa de 10 peças duas horas seguidas.</div></li>
+          <li><div><b>05 Pessoas e cobertura</b>Automático: presentes, ausências, remanejamentos, postos sem cobertura, quem está com nível 50 e quem treinar.</div></li>
+          <li><div><b>04 Qualidade, máquinas e materiais</b>Não conformes, retrabalho, paradas, falta de material e manutenção pedida.</div></li>
+          <li><div><b>06 Áreas de apoio</b>O que o corte, o silk e o arremate precisam entregar, com responsável e prazo.</div></li>
+          <li><div><b>03 Restrições e 07 Plano de ação</b>Registre o problema; o botão <span class="ui">Virar ação</span> leva para o plano. Ação aberta continua nos dias seguintes até ser concluída, e a vencida fica vermelha.</div></li>
+          <li><div><b>08 Semana</b>Automático: planejado × realizado de segunda a sexta, com a quinta marcada como dia de entrega.</div></li>
+        </ol>
+      </div>
+      <div>
+        <div class="demo">
+          <p class="small" style="margin-top:0">Meta da Linha 4 hoje: <b>420 peças</b>. Digite o realizado e veja o status:</p>
+          <div class="tk-in"><label>Realizado<input type="number" id="gdr" value="390" min="0"></label></div>
+          <div class="kpis" style="grid-template-columns:1fr 1fr 1fr"><div class="kpi"><b id="gdp">—</b><span>atingimento</span></div><div class="kpi"><b id="gdd">—</b><span>desvio</span></div><div class="kpi"><b id="gds">—</b><span>status</span></div></div>
+          <div class="feedback" id="gdf" aria-live="polite"></div>
+        </div>
+        <div class="card" style="margin-top:14px">
+          <h3 style="font-size:19px">A reunião de 10 minutos</h3>
+          <p>Toque em <span class="ui">Iniciar reunião</span>, de preferência com a equipe na frente do quadro. O app mostra uma tela por assunto, com cronômetro de 10 minutos:</p>
+          <p><b>1. Resultado</b> de ontem por linha, com os motivos dos vermelhos.<br><b>2. Programação</b> de hoje e pedidos em risco.<br><b>3. Restrições:</b> postos descobertos, nível 50, falta de material ou máquina.<br><b>4. Ações e responsáveis:</b> as abertas, com as vencidas no topo.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3 style="font-size:19px">O quadro na parede</h3>
+      <p>O app guarda o histórico; a folha na parede é para todo mundo ver na hora. Depois de lançar presença e produção, toque em <span class="ui">Imprimir quadro A3</span>. A folha sai no layout do quadro da fábrica, já com metas, pessoas e ações, e com linhas em branco no realizado e nos desvios para preencher à caneta durante o dia.</p>
+      <p class="small muted">Imprima em A3 deitado. Sem impressora A3, use "Ajustar à página" em A4. Na versão na nuvem, o botão baixa um arquivo: abra e mande imprimir.</p>
+      <div class="note"><b>Cores do status.</b> Verde com 100% da meta ou mais, amarelo de 90% a 99%, vermelho abaixo de 90%. Esses cortes podem ser mudados em Ajustes.</div>
+    </div>
+  </section>
+
   <!-- MATRIZ -->
   <section class="sec" id="matriz">
     <div class="sh"><span class="sico" data-i="alfineteira"></span><h2>Matriz de versatilidade</h2></div>
@@ -508,6 +551,9 @@ footer{max-width:1120px;margin:0 auto;padding:0 20px 40px;color:var(--muted);fon
       <details class="faq"><summary>A escala colocou alguém no lugar errado<span data-i="chev"></span></summary><div class="ans">Troque na mão no passo 4, escolhendo outra pessoa na lista do posto. Se acontece sempre, confira na aba Matriz o posto habitual e os níveis da pessoa: a Saúde da matriz costuma apontar a causa.</div></details>
       <details class="faq"><summary>O passo 5 diz que o produto não tem tempo padrão<span data-i="chev"></span></summary><div class="ans">Abra a aba Produtos, escolha o produto e preencha a coluna Min/peça de cada posto. Sem os tempos, o app não calcula ritmo nem gargalo.</div></details>
       <details class="faq"><summary>O e-mail do relatório não chegou<span data-i="chev"></span></summary><div class="ans">Confira os e-mails em Ajustes e olhe a caixa de spam. No envio pelo app de e-mail, se o texto for cortado, use <span class="ui">Copiar texto</span> e cole no corpo da mensagem.</div></details>
+      <details class="faq"><summary>O botão Imprimir quadro A3 não abriu a impressão<span data-i="chev"></span></summary><div class="ans">Na versão na nuvem, o botão baixa um arquivo com o quadro. Abra o arquivo e mande imprimir em A3, na posição deitada. Na versão do celular (GitHub), a janela de impressão abre direto; se não abrir, confira se o navegador não bloqueou.</div></details>
+      <details class="faq"><summary>No GD, a meta da linha aparece zerada<span data-i="chev"></span></summary><div class="ans">A meta vem dos produtos do passo 2 da aba Dia. Adicione o produto com a quantidade. Se a meta continuar zerada, confira na aba Produtos se o campo Família / linha do produto está preenchido com o nome da linha, como "Linha 4".</div></details>
+      <details class="faq"><summary>Uma ação já resolvida continua aparecendo<span data-i="chev"></span></summary><div class="ans">Mude o status da ação para Concluída no bloco 07 do GD. Ela sai da lista de abertas e fica em "Concluídas recentemente".</div></details>
       <details class="faq"><summary>Marquei uma falta por engano<span data-i="chev"></span></summary><div class="ans">É só tocar em Presente de novo. O app salva sozinho; não há botão de salvar.</div></details>
       <p class="muted small" id="fqnone" hidden>Nada encontrado com essas palavras. Tente outra, como “planilha” ou “e-mail”.</p>
     </div>
@@ -528,6 +574,9 @@ footer{max-width:1120px;margin:0 auto;padding:0 20px 40px;color:var(--muted);fon
       <div><b>Takt</b>O ritmo necessário: de quanto em quanto tempo precisa sair uma peça.</div>
       <div><b>Gargalo</b>O posto mais lento, que limita a produção do dia.</div>
       <div><b>Yamazumi</b>O gráfico de barras do passo 5: cada barra é a carga de um posto.</div>
+      <div><b>Atingimento</b>Quanto da meta foi feito: realizado dividido pela meta. 95% quer dizer que faltaram 5%.</div>
+      <div><b>Restrição</b>Algo que impede ou atrasa a produção: falta de material, máquina parada, posto sem pessoa.</div>
+      <div><b>Plano de ação</b>A lista do que vai ser feito para resolver cada problema, com responsável e prazo.</div>
       <div><b>Meta de aptas</b>Quantas pessoas aptas cada posto deveria ter. O padrão é 2.</div>
     </div>
   </section>
@@ -535,7 +584,7 @@ footer{max-width:1120px;margin:0 auto;padding:0 20px 40px;color:var(--muted);fon
   <!-- TESTE -->
   <section class="sec" id="teste">
     <div class="sh"><span class="sico" data-i="botao"></span><h2>Teste rápido</h2></div>
-    <p class="intro">Cinco perguntas do dia a dia. Toque na resposta.</p>
+    <p class="intro">Seis perguntas do dia a dia. Toque na resposta.</p>
     <div class="card" id="quiz"></div>
   </section>
   </main>
@@ -555,7 +604,8 @@ medalha:'<circle cx="12" cy="9" r="5.6"/><circle cx="12" cy="9" r="3" stroke-das
 alfineteira:'<path d="M4 17a8 5.2 0 0 1 16 0z"/><path d="M3 17h18v3.2H3z"/><path d="M8.2 13.4 7.3 8.3M12 12V6.3M15.8 13.4l.9-5.1"/><circle cx="7.1" cy="7.2" r="1.2"/><circle cx="12" cy="5.1" r="1.2"/><circle cx="16.9" cy="7.2" r="1.2"/>',
 tesoura:'<circle cx="6" cy="6.5" r="3"/><circle cx="6" cy="17.5" r="3"/><path d="M8.6 8 20 18M8.6 16 20 6"/>',
 botao:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="6" stroke-dasharray="1.4 1.6"/><circle cx="10.4" cy="10.4" r=".9"/><circle cx="13.6" cy="10.4" r=".9"/><circle cx="10.4" cy="13.6" r=".9"/><circle cx="13.6" cy="13.6" r=".9"/>',
-chev:'<path d="M6 9l6 6 6-6"/>'
+chev:'<path d="M6 9l6 6 6-6"/>',
+quadro:'<rect x="3" y="3.5" width="18" height="12.5" rx="1.5"/><path d="M8 20.5l1.6-4.5M16 20.5l-1.6-4.5"/><path d="M6.5 12.5l3-3.2 2.6 2.2 4.4-4.6"/>'
 };
 const ic=n=>`<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${ICON[n]||""}</svg>`;
 document.querySelectorAll("[data-i]").forEach(el=>{const n=el.dataset.i;if(el.tagName==="A")el.insertAdjacentHTML("afterbegin",ic(n));else el.innerHTML=ic(n)});
@@ -565,6 +615,7 @@ function toast(m){$("toastRoot").innerHTML=`<div class="toast" role="status">${m
 /* ---------- celular do topo ---------- */
 const TABS=[
  ["maquina","Dia","Onde a líder trabalha todo dia","Marque quem veio, diga o que vai ser produzido e o app monta a escala, mostra quem substitui quem e calcula o ritmo da linha. Daqui sai o texto para o grupo e o relatório."],
+ ["quadro","GD","Gestão diária da fábrica","O quadro das 4 linhas e das áreas de apoio: meta × realizado, pessoas, qualidade, restrições e plano de ação. Tem o modo reunião de 10 minutos e imprime o quadro em A3 para a parede."],
  ["medalha","Ranking","Assiduidade da equipe","Mostra a porcentagem de presença de cada pessoa no período, com faltas, atrasos e horas perdidas. Serve para a gestão acompanhar."],
  ["bolsa","Produtos","Roteiros e tempos","Cada produto com a lista de postos por onde passa e o tempo de cada um. Tem também a simulação de demanda."],
  ["carretel","Matriz","Quem sabe fazer o quê","Os níveis de cada pessoa em cada posto, o posto habitual e a Saúde da matriz, que aponta o que precisa de treino ou correção."],
@@ -657,6 +708,11 @@ function ass(){const f=Math.max(0,+$("af").value||0),a=Math.max(0,+$("aa").value
   $("ares").textContent=(v*100).toLocaleString("pt-BR",{maximumFractionDigits:1})+"%";$("aper").textContent=perd.toLocaleString("pt-BR")+"h";$("aresB").className="kpi "+(v>=.95?"good":"bad")}
 ["af","aa"].forEach(id=>$(id).addEventListener("input",ass));ass();
 
+/* GD demo */
+function gdDemo(){const r=Math.max(0,+$("gdr").value||0),m=420,p=r/m;const st=p>=1?["Verde","var(--ok)","Dentro do plano."]:p>=.9?["Amarelo","var(--warn)","Atenção: registre o motivo."]:["Vermelho","var(--stitch)","Desvio: escreva o motivo e abra uma ação."];
+  $("gdp").textContent=Math.round(p*100)+"%";$("gdd").textContent=(r-m>0?"+":"")+(r-m);$("gds").textContent=st[0];$("gds").style.color=st[1];$("gdf").textContent=st[2]}
+$("gdr").addEventListener("input",gdDemo);gdDemo();
+
 /* problemas: busca */
 $("fq").addEventListener("input",e=>{const t=e.target.value.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");let n=0;
   document.querySelectorAll("#faqs details").forEach(d=>{const ok=!t||d.textContent.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").includes(t);d.hidden=!ok;if(ok)n++;if(t&&ok)d.open=true});
@@ -668,6 +724,7 @@ const QZ=[
  ["No passo 3 aparece um cartão vermelho “Descoberto”. O que significa?",["Ninguém pode cobrir aquele posto","A pessoa faltou com atestado","O posto está em manutenção"],0,"Descoberto quer dizer que não há pessoa disponível para o posto. O app sugere trocar a ordem dos produtos ou reduzir a quantidade."],
  ["Quem tem nível 50 num posto…",["opera sozinha, com qualidade","não sabe fazer","opera com acompanhamento"],2,"Nível 50 opera com acompanhamento. Apta é quem tem 75 ou 100."],
  ["O que é o gargalo?",["O posto mais rápido","O posto mais lento, que limita a produção","A pessoa que mais faltou"],1,"O gargalo é o posto mais lento: ele decide quantas peças saem no dia."],
+ ["No GD, a Linha 3 fez 200 de 250 peças. O que fazer?",["Nada, o dia acabou","Escrever o motivo do desvio e, se for o caso, abrir uma ação","Apagar a meta"],1,"200 de 250 é 80%: vermelho. Todo vermelho precisa de motivo escrito e, se o problema puder voltar, de uma ação com responsável e prazo."],
  ["Você troca de celular. Como levar os dados da versão do celular?",["Baixar backup no antigo e restaurar no novo","Os dados vão sozinhos","Importar a planilha da matriz de novo"],0,"Na versão do celular, os dados ficam no aparelho. Baixe o backup em Ajustes e use Restaurar backup no novo."]];
 const ans=[];
 function quiz(){
