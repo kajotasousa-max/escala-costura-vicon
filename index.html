@@ -6,7 +6,7 @@
 <title>Vicon — Escala da Costura</title>
 <meta name="theme-color" content="#14233F">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%231F3A68%22/%3E%3Crect%20x%3D%225%22%20y%3D%225%22%20width%3D%2254%22%20height%3D%2254%22%20rx%3D%2210%22%20fill%3D%22none%22%20stroke%3D%22%23E8B53A%22%20stroke-width%3D%222%22%20stroke-dasharray%3D%224%203%22/%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%223.6%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M14%2047h36%22/%3E%3Cpath%20d%3D%22M19%2047V27a5%205%200%200%201%205-5h18a4%204%200%200%201%204%204v5a2%202%200%200%201-2%202h-8v6%22/%3E%3Cpath%20d%3D%22M38%2039v5%22/%3E%3C/g%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%231F3A68%22/%3E%3Crect%20x%3D%225%22%20y%3D%225%22%20width%3D%2254%22%20height%3D%2254%22%20rx%3D%2210%22%20fill%3D%22none%22%20stroke%3D%22%23E8B53A%22%20stroke-width%3D%222%22%20stroke-dasharray%3D%224%203%22/%3E%3Cg%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20d%3D%22M44.5%2018.5c7%206%205.6%2019.6-4.9%2024.3S20%2047.9%2013.5%2054%22%20stroke%3D%22%23E8B53A%22%20stroke-width%3D%223.2%22/%3E%3Cpath%20d%3D%22M48.5%2014.5%2011%2052%22%20stroke%3D%22%23fff%22%20stroke-width%3D%225.5%22/%3E%3Cpath%20d%3D%22M46.4%2016.6l-3.4%203.4%22%20stroke%3D%22%231F3A68%22%20stroke-width%3D%222%22/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
@@ -396,7 +396,10 @@ header.top::after{content:"";position:absolute;left:0;right:0;bottom:5px;border-
 .tagmark{display:grid;place-items:center;width:44px;height:44px;border-radius:10px;background:#F5F1E6;color:#1F3A68;position:relative;box-shadow:0 2px 6px rgba(0,0,0,.25)}
 .tagmark::before{content:"";position:absolute;inset:3px;border:1.3px dashed #C99A2E;border-radius:7px}
 .brand span.tagmark{color:#1F3A68}
-.tagmark .ic{width:26px;height:26px;stroke-width:2}
+.tagmark .ic{width:33px;height:33px}
+.tagmark .corpo{stroke:#1F3A68;stroke-width:2.6}
+.tagmark .olho{stroke:#F5F1E6;stroke-width:1}
+.tagmark .linha{stroke:#C2412D;stroke-width:1.6}
 .yzchart text.halo{paint-order:stroke;stroke:var(--card);stroke-width:4px;stroke-linejoin:round}
 .brandtx{display:flex;flex-direction:column;line-height:1.05}
 .brand h1{font-size:22px;color:#fff;font-weight:800;letter-spacing:.06em;font-stretch:118%;font-variation-settings:"wdth" 118}
@@ -507,7 +510,7 @@ table.rank td.pos{font-family:var(--fh)}
 <body>
 <header class="top">
   <div class="top-in">
-    <div class="brand"><span class="tagmark" aria-hidden="true"><svg viewBox="0 0 24 24" class="ic"><path d="M3 20h18"/><path d="M5 20v-2h14v2"/><path d="M7 18V8.5A2.5 2.5 0 0 1 9.5 6H18a2 2 0 0 1 2 2v2.5a1 1 0 0 1-1 1h-4.5V14"/><path d="M14.5 14v2.2"/><path d="M12.5 16.2h4"/></svg></span><div class="brandtx"><h1 id="brandName">Vicon</h1><span id="brandSub">Escala da costura</span></div></div>
+    <div class="brand"><span class="tagmark" aria-hidden="true"><svg viewBox="0 0 24 24" class="ic"><path class="linha" d="M18.7 5.3c3 2.6 2.4 8.4-2.1 10.4S8 17.9 5.2 20.6"/><path class="corpo" d="M20.4 3.6 4.3 19.7"/><path class="olho" d="M19.5 4.5l-1.5 1.5"/></svg></span><div class="brandtx"><h1 id="brandName">Vicon</h1><span id="brandSub">Escala da costura</span></div></div>
     <nav class="tabs" role="tablist" id="tabs"></nav>
     <div class="savestate" id="saveState" aria-live="polite"></div>
   </div>
