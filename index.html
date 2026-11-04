@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Vicon — Escala da Costura</title>
-<meta name="theme-color" content="#1B2437">
+<meta name="theme-color" content="#14233F">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🧵%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%231F3A68%22/%3E%3Crect%20x%3D%225%22%20y%3D%225%22%20width%3D%2254%22%20height%3D%2254%22%20rx%3D%2210%22%20fill%3D%22none%22%20stroke%3D%22%23E8B53A%22%20stroke-width%3D%222%22%20stroke-dasharray%3D%224%203%22/%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%223.6%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M14%2047h36%22/%3E%3Cpath%20d%3D%22M19%2047V27a5%205%200%200%201%205-5h18a4%204%200%200%201%204%204v5a2%202%200%200%201-2%202h-8v6%22/%3E%3Cpath%20d%3D%22M38%2039v5%22/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#1B2437; --denim:#2B4B7C; --denim-2:#3D6199; --paper:#EEF1F5; --card:#FFFFFF; --line:#D4DAE3;
@@ -35,8 +35,8 @@
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *,*::before,*::after{box-sizing:inherit}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:"Barlow",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.45}
-h1,h2,h3{font-family:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;font-weight:700;letter-spacing:.01em;margin:0}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--fb);font-size:15px;line-height:1.45}
+h1,h2,h3{font-family:var(--fh);font-weight:700;letter-spacing:.01em;margin:0}
 button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
 :focus-visible{outline:3px solid var(--chalk);outline-offset:2px}
@@ -51,7 +51,7 @@ header.top{background:var(--ink);color:#fff;position:sticky;top:env(safe-area-in
 .brand h1{font-size:26px;color:#fff}
 .brand span{color:#AEB9CC;font-size:14px}
 nav.tabs{display:flex;gap:2px;margin-left:auto;overflow-x:auto;max-width:100%}
-nav.tabs button{background:transparent;border:0;color:#C9D2E1;padding:10px 14px 12px;font-family:"Barlow Condensed",sans-serif;font-size:18px;font-weight:600;border-bottom:4px solid transparent;white-space:nowrap}
+nav.tabs button{background:transparent;border:0;color:#C9D2E1;padding:10px 14px 12px;font-family:var(--fh);font-size:18px;font-weight:600;border-bottom:4px solid transparent;white-space:nowrap}
 nav.tabs button[aria-selected="true"]{color:#fff;border-bottom-color:var(--chalk)}
 .savestate{font-size:12px;color:#AEB9CC;padding-bottom:12px}
 
@@ -84,7 +84,7 @@ table{border-collapse:collapse}
 .daybar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:16px}
 .kpis{display:flex;gap:10px;flex-wrap:wrap;margin-left:auto}
 .kpi{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 12px;min-width:92px}
-.kpi b{display:block;font-family:"Barlow Condensed",sans-serif;font-size:24px;line-height:1.1}
+.kpi b{display:block;font-family:var(--fh);font-size:24px;line-height:1.1}
 .kpi span{font-size:12px;color:var(--muted)}
 .kpi.bad b{color:var(--stitch)} .kpi.good b{color:var(--ok)}
 
@@ -119,7 +119,7 @@ table{border-collapse:collapse}
 .alert.blue{background:var(--l0);border-color:var(--denim)}
 .lineblock{margin-top:14px}
 .lineblock h3{font-size:20px;margin-bottom:8px;display:flex;gap:10px;align-items:baseline}
-.lineblock h3 small{font-family:"Barlow",sans-serif;font-size:13px;font-weight:500;color:var(--muted)}
+.lineblock h3 small{font-family:var(--fb);font-size:13px;font-weight:500;color:var(--muted)}
 .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
 .posto{background:var(--card);border:1.5px solid var(--line);border-radius:var(--radius);padding:10px 10px 8px;display:flex;flex-direction:column;gap:6px}
 .posto.gap{border:2px dashed var(--stitch);background:repeating-linear-gradient(135deg,transparent 0 10px,var(--stitch-soft) 10px 12px),var(--card)}
@@ -149,13 +149,13 @@ table{border-collapse:collapse}
 .tag{font-size:12px;font-weight:700;padding:2px 8px;border-radius:20px;white-space:nowrap}
 .tag.ok{background:var(--ok-soft);color:var(--ok)} .tag.amb{background:var(--warn-soft);color:var(--warn)} .tag.red{background:var(--stitch-soft);color:var(--stitch)}
 .grow{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;padding:8px 0;border-top:1px dashed var(--line);font-size:14px}
-.gtime{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:17px;color:var(--denim)}
+.gtime{font-family:var(--fh);font-weight:700;font-size:17px;color:var(--denim)}
 .gbody>div{margin-bottom:4px}
 .alts{margin-top:6px}
 .alt{display:flex;gap:10px;align-items:center;justify-content:space-between;background:var(--paper);border-radius:7px;padding:6px 8px;margin-top:4px}
 .bloco{margin-top:16px;padding-top:12px;border-top:3px solid var(--ink)}
 .bh{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline}
-.bh b{font-family:"Barlow Condensed",sans-serif;font-size:24px}
+.bh b{font-family:var(--fh);font-size:24px}
 .bh span{font-weight:600}
 .slotrow{display:flex;gap:6px;align-items:center}
 .slotrow select{flex:1;min-width:0;min-height:34px;font-size:14px;font-weight:600;padding:4px 6px}
@@ -168,7 +168,7 @@ table.mv{font-size:12px}
 table.mv th,table.mv td{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:0}
 table.mv thead th{position:sticky;top:0;background:var(--card);z-index:2}
 table.mv thead tr:nth-child(2) th{top:26px}
-table.mv th.l{font-family:"Barlow Condensed",sans-serif;font-size:14px;height:26px;background:var(--ink);color:#fff}
+table.mv th.l{font-family:var(--fh);font-size:14px;height:26px;background:var(--ink);color:#fff}
 table.mv th.pc{writing-mode:vertical-rl;transform:rotate(180deg);height:190px;padding:6px 2px;font-weight:600;white-space:nowrap;text-align:left;font-size:11.5px}
 table.mv td.nm,table.mv th.nm{position:sticky;left:0;background:var(--card);z-index:1;min-width:190px;text-align:left;padding:4px 8px}
 table.mv thead th.nm{z-index:3}
@@ -203,13 +203,13 @@ table.rank th{background:var(--ink);color:#fff;text-align:left;padding:8px;font-
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) table.rank th{background:#0C1018}}
 table.rank td{padding:8px;border-bottom:1px solid var(--line)}
 table.rank tr.top td{background:var(--chalk-soft)}
-table.rank td.pos{font-family:"Barlow Condensed",sans-serif;font-size:22px;font-weight:700;width:48px;text-align:center}
+table.rank td.pos{font-family:var(--fh);font-size:22px;font-weight:700;width:48px;text-align:center}
 .bar{height:8px;background:var(--l0);border-radius:4px;overflow:hidden;min-width:80px}
 .bar i{display:block;height:100%;background:var(--ok)}
 .podium{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0}
 @media (max-width:700px){.podium{grid-template-columns:1fr}}
 .podium .card{border-top:6px solid var(--chalk)}
-.podium .card b{font-family:"Barlow Condensed",sans-serif;font-size:26px;display:block}
+.podium .card b{font-family:var(--fh);font-size:26px;display:block}
 .tablewrap{overflow-x:auto}
 
 /* modal + toast */
@@ -313,7 +313,7 @@ details.step[open] .chev{transform:rotate(180deg)}
   .podium .card>span:last-child{font-size:12px;display:block;line-height:1.3}
   .rankcard{display:grid;grid-template-columns:40px 1fr auto;gap:2px 10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin-top:6px}
   .rankcard.top{background:var(--chalk-soft)}
-  .rankcard .pos{font-family:"Barlow Condensed",sans-serif;font-size:24px;font-weight:700;text-align:center;grid-row:span 2}
+  .rankcard .pos{font-family:var(--fh);font-size:24px;font-weight:700;text-align:center;grid-row:span 2}
   .rankcard .pct{font-weight:700;font-size:17px}
   .rankcard small{grid-column:2/4;color:var(--muted);font-size:12px}
   table.mv td.nm,table.mv th.nm{min-width:120px;max-width:130px}
@@ -332,7 +332,7 @@ details.step[open] .chev{transform:rotate(180deg)}
 .saude>summary::-webkit-details-marker{display:none}
 .saude>summary h3{font-size:21px;flex:1;min-width:170px}
 .saude[open] .chev{transform:rotate(180deg)}
-.hgrp{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:16px;margin:14px 0 2px;color:var(--denim)}
+.hgrp{font-family:var(--fh);font-weight:700;font-size:16px;margin:14px 0 2px;color:var(--denim)}
 .hitem{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-top:1px dashed var(--line);font-size:14px}
 .hitem .tag{margin-top:2px;min-width:62px;text-align:center}
 .hitem .tx{flex:1;min-width:0}
@@ -342,7 +342,7 @@ details.step[open] .chev{transform:rotate(180deg)}
 .yz{margin-top:14px;padding-top:12px;border-top:3px solid var(--ink)}
 .yz:first-of-type{border-top:0;padding-top:0}
 .yzhead{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline}
-.yzhead b{font-family:"Barlow Condensed",sans-serif;font-size:22px}
+.yzhead b{font-family:var(--fh);font-size:22px}
 .yzkpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px;margin:10px 0}
 .yzkpis .kpi{min-width:0}
 .yzkpis .kpi.warn b{color:var(--warn)}
@@ -363,6 +363,139 @@ details.step[open] .chev{transform:rotate(180deg)}
 .simbar .field{margin:0}
 @media (max-width:760px){.yztable .hm{display:none}.hitem{flex-direction:column;gap:4px}}
 
+
+/* ===================== TEMA ATELIÊ (denim · giz · pesponto) ===================== */
+:root{
+  --fb:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --fh:"Archivo",system-ui,sans-serif;
+  --ink:#18233A; --denim:#1F3A68; --denim-2:#2F5590; --paper:#EDF1F6; --card:#FFFFFF; --line:#DCE3ED;
+  --muted:#5C6880; --chalk:#E8B53A; --chalk-soft:#FBF0D3; --stitch:#C2412D; --stitch-soft:#F9E3DE;
+  --ok:#21825A; --ok-soft:#DDF2E7; --warn:#B4741A; --warn-soft:#FCEED4;
+  --radius:12px;
+  --g-denim:linear-gradient(118deg,#101C33 0%,#1A3159 48%,#27497F 100%);
+  --g-btn:linear-gradient(180deg,#2B4F88 0%,#1F3A68 100%);
+  --g-tile:linear-gradient(145deg,#33599A 0%,#1A3159 100%);
+  --g-giz:linear-gradient(145deg,#F2C75E 0%,#DA9D22 100%);
+  --sh:0 1px 2px rgba(20,35,63,.06),0 6px 18px -8px rgba(20,35,63,.18);
+}
+:root[data-theme="dark"]{--ink:#E5EAF3;--denim:#93B3E8;--denim-2:#B3C9EF;--paper:#0F1522;--card:#182132;--line:#2A3448;--muted:#9AA6BB;--chalk:#EBC055;--chalk-soft:#3A3120;
+  --g-denim:linear-gradient(118deg,#0A101C 0%,#132341 55%,#1C3762 100%);--g-btn:linear-gradient(180deg,#3B66AD,#2A4E89);--g-tile:linear-gradient(145deg,#3B66AD,#203C6C);--sh:0 1px 2px rgba(0,0,0,.3),0 8px 20px -10px rgba(0,0,0,.6)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--ink:#E5EAF3;--denim:#93B3E8;--denim-2:#B3C9EF;--paper:#0F1522;--card:#182132;--line:#2A3448;--muted:#9AA6BB;--chalk:#EBC055;--chalk-soft:#3A3120;
+  --g-denim:linear-gradient(118deg,#0A101C 0%,#132341 55%,#1C3762 100%);--g-btn:linear-gradient(180deg,#3B66AD,#2A4E89);--g-tile:linear-gradient(145deg,#3B66AD,#203C6C);--sh:0 1px 2px rgba(0,0,0,.3),0 8px 20px -10px rgba(0,0,0,.6)}}
+body{font-family:var(--fb);font-size:15px;letter-spacing:-.003em;font-variation-settings:"wdth" 100;
+  background:radial-gradient(1200px 380px at 85% -120px,rgba(47,85,144,.12),transparent 70%),var(--paper);background-attachment:fixed}
+h1,h2,h3{font-family:var(--fh);font-weight:700;letter-spacing:-.012em;font-stretch:88%;font-variation-settings:"wdth" 88}
+.ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none;display:block}
+/* cabeçalho: tecido denim com pesponto */
+header.top,:root[data-theme="dark"] header.top{background:var(--g-denim)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) header.top{background:var(--g-denim)}}
+header.top{box-shadow:0 2px 0 rgba(0,0,0,.08)}
+header.top::after{content:"";position:absolute;left:0;right:0;bottom:5px;border-top:1.5px dashed rgba(232,181,58,.55);pointer-events:none}
+.top-in{padding:12px 18px 0;align-items:center}
+.brand{align-items:center;gap:12px;padding-bottom:14px}
+.tagmark{display:grid;place-items:center;width:44px;height:44px;border-radius:10px;background:#F5F1E6;color:#1F3A68;position:relative;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.tagmark::before{content:"";position:absolute;inset:3px;border:1.3px dashed #C99A2E;border-radius:7px}
+.brand span.tagmark{color:#1F3A68}
+.tagmark .ic{width:26px;height:26px;stroke-width:2}
+.yzchart text.halo{paint-order:stroke;stroke:var(--card);stroke-width:4px;stroke-linejoin:round}
+.brandtx{display:flex;flex-direction:column;line-height:1.05}
+.brand h1{font-size:22px;color:#fff;font-weight:800;letter-spacing:.06em;font-stretch:118%;font-variation-settings:"wdth" 118}
+.brand span#brandSub{color:#C9D5EA;font-size:13px;font-weight:500;letter-spacing:.01em;margin-top:3px}
+nav.tabs{gap:4px;align-self:flex-end}
+nav.tabs button{display:flex;align-items:center;gap:8px;font-family:var(--fb);font-size:14.5px;font-weight:600;color:#BFCBE0;padding:11px 14px 14px;border-bottom:0;position:relative;border-radius:10px 10px 0 0}
+nav.tabs button .ic{width:19px;height:19px}
+nav.tabs button:hover{color:#fff;background:rgba(255,255,255,.06)}
+nav.tabs button[aria-selected="true"]{color:#fff;background:rgba(255,255,255,.1)}
+nav.tabs button[aria-selected="true"]::after{content:"";position:absolute;left:12px;right:12px;bottom:9px;border-top:2px dashed var(--chalk)}
+.savestate{color:#AFC0DA;align-self:center;padding-bottom:12px}
+/* superfícies */
+.card{border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--sh)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border-radius:9px;border:1px solid var(--line);font-weight:600;transition:border-color .12s,background .12s}
+.btn .ic{width:17px;height:17px}
+.btn:hover{border-color:var(--denim-2)}
+.btn.primary{background:var(--g-btn);border-color:transparent;color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.18) inset,0 2px 6px -2px rgba(31,58,104,.55)}
+.btn.primary:hover{filter:brightness(1.08)}
+:root[data-theme="dark"] .btn.primary{color:#fff}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn.primary{color:#fff}}
+.btn.danger{border-color:var(--stitch-soft)}
+input[type=text],input[type=number],input[type=time],input[type=date],input[type=email],select,textarea{border:1px solid var(--line);border-radius:9px;background:var(--card)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--denim-2);box-shadow:0 0 0 3px rgba(47,85,144,.18)}
+/* KPIs */
+.kpi{border-radius:10px;border:1px solid var(--line);background:var(--card);box-shadow:var(--sh);padding:8px 12px}
+.kpi b{font-family:var(--fh);font-weight:700;font-size:25px;font-variant-numeric:tabular-nums;font-stretch:90%;font-variation-settings:"wdth" 90}
+.kpi span{font-size:12px}
+/* cabeçalhos de passo e de página */
+.step h2,h2.sh{display:flex;align-items:center;gap:14px;font-size:21px;margin:0}
+.sico{position:relative;display:grid;place-items:center;width:42px;height:42px;border-radius:11px;background:var(--g-tile);color:#fff;flex:none;box-shadow:0 3px 8px -3px rgba(26,49,89,.6)}
+.sico .ic{width:23px;height:23px}
+.sico i{position:absolute;top:-6px;right:-7px;width:21px;height:21px;border-radius:50%;background:var(--g-giz);color:#18233A;font-style:normal;font-size:11.5px;font-weight:800;display:grid;place-items:center;border:2px solid var(--card)}
+.stt{display:flex;flex-direction:column;line-height:1.15}
+.stt small{font-family:var(--fb);font-size:12px;font-weight:600;color:var(--muted);letter-spacing:0}
+details.step>summary .sumline{margin:6px 0 0 56px}
+.chev{display:grid;place-items:center;width:30px;height:30px;border-radius:8px;background:var(--paper)}
+.chev .ic{width:18px;height:18px}
+h2.ph1{display:flex;align-items:center;gap:12px;font-size:26px}
+.pico{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:var(--chalk-soft);color:var(--denim);flex:none;border:1px dashed color-mix(in srgb,var(--chalk) 70%,transparent)}
+.pico .ic{width:22px;height:22px}
+.pico.sm{width:32px;height:32px;border-radius:9px}.pico.sm .ic{width:19px;height:19px}
+.saude>summary h3{display:flex;align-items:center;gap:10px;font-size:20px}
+/* separadores com pesponto */
+.bloco{border-top:0;position:relative;padding-top:16px}
+.bloco::before{content:"";position:absolute;left:0;right:0;top:0;border-top:2px dashed var(--line)}
+.yz{border-top:2px dashed var(--line)}
+.bh b{font-family:var(--fh);font-size:23px;font-variant-numeric:tabular-nums}
+.yzhead b{font-size:20px}
+.lineblock h3{font-size:18px}
+.posto{border-radius:10px;border:1px solid var(--line);background:var(--card)}
+.posto.gap{border:1.5px dashed var(--stitch)}
+.posto.sup{border-color:color-mix(in srgb,var(--warn) 60%,var(--line))}
+.guide{border-radius:10px;box-shadow:none}
+.alert{border-radius:9px;border-left-width:4px}
+.blocks button{border-radius:999px;border:1px solid var(--line)}
+.blocks button[aria-pressed="true"]{background:var(--g-btn);border-color:transparent}
+.seg{border:1px solid var(--line);border-radius:9px}
+.seg button+button{border-left:1px solid var(--line)}
+.tag{border-radius:999px}
+.wtag{display:inline-block;font-size:11px;font-weight:700;color:var(--warn);background:var(--warn-soft);border-radius:999px;padding:0 6px;margin-left:4px}
+/* tabelas */
+table.rank{border-radius:var(--radius);box-shadow:var(--sh);border:1px solid var(--line)}
+table.rank th,:root[data-theme="dark"] table.rank th{background:var(--g-denim);font-weight:600}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) table.rank th{background:var(--g-denim)}}
+table.mv th.l{background:var(--g-denim);font-family:var(--fh)}
+.mvwrap{border-radius:var(--radius);box-shadow:var(--sh)}
+.podium .card{border-top:0;position:relative;overflow:hidden}
+.podium .card::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--g-giz)}
+.podium .card b{font-family:var(--fh);font-size:24px}
+table.rank td.pos{font-family:var(--fh)}
+.list button[aria-current="true"]{box-shadow:inset 3px 0 0 var(--chalk)}
+/* estado vazio */
+.emptyart{display:grid;place-items:center;width:84px;height:84px;margin:0 auto 14px;border-radius:50%;background:var(--chalk-soft);color:var(--denim);border:2px dashed color-mix(in srgb,var(--chalk) 75%,transparent)}
+.emptyart .ic{width:42px;height:42px;stroke-width:1.5}
+.empty h2{font-size:26px}
+/* modal e toast */
+.modal{border-radius:16px;box-shadow:0 24px 60px -20px rgba(0,0,0,.45)}
+.toast{border-radius:10px;background:var(--g-denim)}
+/* navegação inferior (celular) */
+@media (max-width:760px){
+  .top-in{padding:10px 14px}
+  .brand{padding-bottom:4px}
+  .tagmark{width:38px;height:38px}.tagmark .ic{width:22px;height:22px}
+  .brand h1{font-size:19px}
+  header.top::after{bottom:3px}
+  .bnav{background:color-mix(in srgb,var(--card) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 -6px 20px -12px rgba(20,35,63,.35)}
+  .bnav button{position:relative;font-family:var(--fb);font-size:11px;font-weight:600;padding:9px 2px 9px}
+  .bnav .ic{width:24px;height:24px;stroke-width:1.7}
+  .bnav button[aria-selected="true"]{color:var(--denim)}
+  .bnav button[aria-selected="true"] .ic{stroke-width:2.1}
+  .bnav button[aria-selected="true"]::before{content:"";position:absolute;top:0;left:28%;right:28%;border-top:2.5px dashed var(--chalk)}
+  .step h2,h2.sh{font-size:18.5px;gap:12px}
+  .sico{width:38px;height:38px}
+  details.step>summary .sumline{margin-left:50px}
+  h2.ph1{font-size:22px}
+  .kpi b{font-size:21px}
+  .bh b{font-size:20px}
+}
+
 @media print{
   header.top,.no-print,.steps,.daybar .kpis,.alloc .row,.bnav,.actionbar,.blocks{display:none!important}
   body{background:#fff}
@@ -374,29 +507,43 @@ details.step[open] .chev{transform:rotate(180deg)}
 <body>
 <header class="top">
   <div class="top-in">
-    <div class="brand"><h1 id="brandName">Vicon</h1><span id="brandSub">Escala da costura</span></div>
-    <nav class="tabs" role="tablist" id="tabs">
-      <button role="tab" data-tab="dia" aria-selected="true">Dia</button>
-      <button role="tab" data-tab="assiduidade">Assiduidade</button>
-      <button role="tab" data-tab="produtos">Produtos</button>
-      <button role="tab" data-tab="matriz">Matriz</button>
-      <button role="tab" data-tab="ajustes">Ajustes</button>
-    </nav>
+    <div class="brand"><span class="tagmark" aria-hidden="true"><svg viewBox="0 0 24 24" class="ic"><path d="M3 20h18"/><path d="M5 20v-2h14v2"/><path d="M7 18V8.5A2.5 2.5 0 0 1 9.5 6H18a2 2 0 0 1 2 2v2.5a1 1 0 0 1-1 1h-4.5V14"/><path d="M14.5 14v2.2"/><path d="M12.5 16.2h4"/></svg></span><div class="brandtx"><h1 id="brandName">Vicon</h1><span id="brandSub">Escala da costura</span></div></div>
+    <nav class="tabs" role="tablist" id="tabs"></nav>
     <div class="savestate" id="saveState" aria-live="polite"></div>
   </div>
 </header>
-<nav class="bnav" id="bnav" aria-label="Navegação">
-  <button data-tab="dia"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Dia</span></button>
-  <button data-tab="assiduidade"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg><span>Ranking</span></button>
-  <button data-tab="produtos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span>Produtos</span></button>
-  <button data-tab="matriz"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><span>Matriz</span></button>
-  <button data-tab="ajustes"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg><span>Ajustes</span></button>
-</nav>
+<nav class="bnav" id="bnav" aria-label="Navegação"></nav>
 <main class="wrap" id="app"><div class="empty"><h2>Carregando…</h2></div></main>
 <div id="modalRoot"></div>
 <div id="toastRoot"></div>
 
 <script>
+
+/* ============================ ÍCONES (traço, desenho próprio) ============================ */
+const ICON={
+maquina:'<path d="M3 20h18"/><path d="M5 20v-2h14v2"/><path d="M7 18V8.5A2.5 2.5 0 0 1 9.5 6H18a2 2 0 0 1 2 2v2.5a1 1 0 0 1-1 1h-4.5V14"/><path d="M14.5 14v2.2"/><path d="M12.5 16.2h4"/><circle cx="17.3" cy="8.7" r=".9"/><path d="M10.5 6V4.3M9.3 4.3h2.4"/>',
+carretel:'<path d="M6 3.5h12M6 20.5h12"/><path d="M8 3.5v17M16 3.5v17"/><path d="M8 9l8-2.2M8 13l8-2.2M8 17l8-2.2"/>',
+fita:'<circle cx="9" cy="12" r="6"/><circle cx="9" cy="12" r="1.6"/><path d="M9 18h12v-3h-6.8"/><path d="M16 15v1.3M18.5 15v1.3"/>',
+agulha:'<path d="M20 4 5.5 18.5 4 20"/><path d="M17.4 5.2l1.4 1.4"/><path d="M19.6 4.4c-4.6.9-2.6 5.6-7 8.2s-6.6 2.3-8.2.6"/>',
+cabide:'<path d="M10 5.6a2 2 0 1 1 2 2v1.2"/><path d="M12 8.8 3.6 15.2A1.4 1.4 0 0 0 4.4 17.7h15.2a1.4 1.4 0 0 0 .8-2.5L12 8.8z"/>',
+bolsa:'<path d="M5 8h14l-1.2 12.5H6.2z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/><path d="M6 12h12" stroke-dasharray="1.6 1.8"/>',
+medalha:'<circle cx="12" cy="9" r="5.6"/><circle cx="12" cy="9" r="3" stroke-dasharray="1.3 1.4"/><path d="M9 13.9 7.6 21l4.4-2.4 4.4 2.4-1.4-7.1"/>',
+alfineteira:'<path d="M4 17a8 5.2 0 0 1 16 0z"/><path d="M3 17h18v3.2H3z"/><path d="M8.2 13.4 7.3 8.3M12 12V6.3M15.8 13.4l.9-5.1"/><circle cx="7.1" cy="7.2" r="1.2"/><circle cx="12" cy="5.1" r="1.2"/><circle cx="16.9" cy="7.2" r="1.2"/>',
+tesoura:'<circle cx="6" cy="6.5" r="3"/><circle cx="6" cy="17.5" r="3"/><path d="M8.6 8 20 18M8.6 16 20 6"/>',
+chev:'<path d="M6 9l6 6 6-6"/>',
+envelope:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.6 7.2 12 13l8.4-5.8"/>',
+conversa:'<path d="M20 11.6a8 8 0 0 1-11.7 7.1L4 20l1.2-4A8 8 0 1 1 20 11.6z"/>',
+impressora:'<path d="M7 9V3.5h10V9"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 14h10v6.5H7z"/>',
+alerta:'<path d="M12 4 2.8 19.5h18.4z"/><path d="M12 10v4.2M12 17v.1"/>'
+};
+const ic=(n,c="")=>`<svg class="ic ${c}" viewBox="0 0 24 24" aria-hidden="true">${ICON[n]||""}</svg>`;
+const NAV=[["dia","Dia","Dia","maquina"],["assiduidade","Assiduidade","Ranking","medalha"],["produtos","Produtos","Produtos","bolsa"],["matriz","Matriz","Matriz","carretel"],["ajustes","Ajustes","Ajustes","fita"]];
+document.getElementById("tabs").innerHTML=NAV.map(([k,t,,i])=>`<button role="tab" data-tab="${k}" aria-selected="${k==="dia"}">${ic(i)}<span>${t}</span></button>`).join("");
+document.getElementById("bnav").innerHTML=NAV.map(([k,,t,i])=>`<button data-tab="${k}" aria-selected="${k==="dia"}">${ic(i)}<span>${t}</span></button>`).join("");
+/* cabeçalho de passo do dia (sequência real 1–5) e de página */
+const passo=(n,icon,title)=>`<span class="sico">${ic(icon)}<i>${n}</i></span><span class="stt"><small>Passo ${n}</small><span>${title}</span></span>`;
+const pagina=(icon,title)=>`<span class="pico">${ic(icon)}</span><span>${title}</span>`;
+
 /* ============================ STATE & STORAGE ============================ */
 const DEF_SETTINGS={empresa:"Vicon",setor:"Costura",inicio:"07:00",fim:"17:00",almIni:"12:00",almFim:"13:00",contarJustificadas:false,emails:"",emailAssunto:"Escala da costura",emailEndpoint:"",emailToken:"",emailRanking:true};
 const S={settings:{...DEF_SETTINGS},postos:[],pessoas:[],produtos:[],dias:{}};
@@ -717,22 +864,22 @@ function yamazumiSVG(rows,takt,titulo){
       const over=takt&&r.ciclo>takt+1e-9,near=takt&&!over&&r.ciclo>=takt*.9;
       const fill=over?"var(--stitch)":near?"var(--warn)":"var(--denim)";
       mark=`<path class="bm" d="M${x},${y0}V${yt+rr}Q${x},${yt} ${x+rr},${yt}H${x+bw-rr}Q${x+bw},${yt} ${x+bw},${yt+rr}V${y0}Z" fill="${fill}"/>`;
-      if(r.gargalo||over)val=h>20?`<text x="${cx}" y="${yt+14}" font-size="11" font-weight="700" text-anchor="middle" fill="var(--card)">${fmtN(r.ciclo,2)}</text>`:`<text x="${cx}" y="${yt-6}" font-size="11" font-weight="700" text-anchor="middle" fill="var(--ink)">${fmtN(r.ciclo,2)}</text>`;
-      if(r.gargalo)val+=`<text x="${cx}" y="${yt-(h>20?7:19)}" font-size="10.5" font-weight="700" text-anchor="middle" fill="var(--stitch)">GARGALO</text>`;
+      if(r.gargalo||over)val=h>20?`<text x="${cx}" y="${yt+14}" font-size="11" font-weight="700" text-anchor="middle" fill="var(--card)">${fmtN(r.ciclo,2)}</text>`:`<text x="${cx}" y="${yt-6}" font-size="11" font-weight="700" text-anchor="middle" fill="var(--ink)" class="halo">${fmtN(r.ciclo,2)}</text>`;
+      if(r.gargalo)val+=`<text x="${cx}" y="${yt-(h>20?7:19)}" font-size="10.5" font-weight="700" text-anchor="middle" fill="var(--stitch)" class="halo">gargalo</text>`;
     }
-    const pes=r.tempo?`<text x="${cx}" y="${y0+14}" font-size="11" text-anchor="middle" fill="var(--muted)">${fmtPes(r.pessoas)} p${r.lv50?" ⚠":""}</text>`:"";
+    const pes=r.tempo?`<text x="${cx}" y="${y0+14}" font-size="11" text-anchor="middle" fill="var(--muted)">${fmtPes(r.pessoas)} p</text>${r.lv50?`<g transform="translate(${cx+15},${y0+6})"><path d="M0-5.5 5 3.5H-5z" fill="var(--warn)"/><text y="2.6" font-size="7" font-weight="800" text-anchor="middle" fill="var(--card)">!</text></g>`:""}`:"";
     g+=`<g class="col" data-tip="${tip}"><rect x="${L+slot*i}" y="${T}" width="${slot}" height="${PH+B}" fill="transparent"/>${mark}${val}${pes}
       <text transform="translate(${cx+3},${y0+26}) rotate(-38)" font-size="11" text-anchor="end" fill="var(--ink)">${esc(lab)}</text></g>`;
   });
   g+=`<line x1="${L}" x2="${W-R}" y1="${T+PH}" y2="${T+PH}" stroke="var(--muted)" stroke-width="1"/>`;
-  if(takt){const yt=y(takt);g+=`<line x1="${L}" x2="${W-R}" y1="${yt}" y2="${yt}" stroke="var(--ink)" stroke-width="2" stroke-dasharray="7 5"/><text x="${W-R+6}" y="${yt-3}" font-size="12" font-weight="700" fill="var(--ink)">takt</text><text x="${W-R+6}" y="${yt+11}" font-size="11.5" fill="var(--ink)">${fmtMin(takt)}</text>`}
+  if(takt){const yt=y(takt);g+=`<line x1="${L}" x2="${W-R}" y1="${yt}" y2="${yt}" stroke="var(--ink)" stroke-width="2" stroke-dasharray="7 5"/><text x="${W-R+6}" y="${yt-3}" font-size="12" font-weight="700" fill="var(--ink)" class="halo">takt</text><text x="${W-R+6}" y="${yt+11}" font-size="11.5" fill="var(--ink)">${fmtMin(takt)}</text>`}
   return `<div class="yzchart"><svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${esc(titulo)}">
     <defs><pattern id="yzHatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" fill="var(--stitch-soft)"/><line x1="0" y1="0" x2="0" y2="7" stroke="var(--stitch)" stroke-width="2"/></pattern></defs>${g}</svg></div>`;
 }
 function yamazumiTabela(rows,takt,sim){
   return `<details style="margin-top:6px"><summary class="small" style="cursor:pointer;font-weight:600">Ver tabela por posto</summary><div class="tablewrap"><table class="yztable"><thead><tr><th>Posto</th><th class="r">Min/peça</th><th class="r">Pessoas</th>${sim?`<th class="r hm">Aptas 75+</th>`:`<th class="r hm">Precisa</th>`}<th class="r">Ciclo efetivo</th><th class="hm">Situação</th></tr></thead><tbody>
   ${rows.map(r=>{const st=!r.tempo?"sem tempo":r.parado?"sem pessoa":takt&&r.ciclo>takt+1e-9?"acima do takt":takt&&r.ciclo>=takt*.9?"no limite":"ok";
-    return `<tr class="${r.gargalo?"gg":""}"><td>${r.gargalo?"<b>":""}${esc(r.nome)}${r.gargalo?"</b> · gargalo":""}</td><td class="r">${fmtN(r.tempo)}</td><td class="r">${r.tempo?fmtPes(r.pessoas):"—"}</td><td class="r hm">${sim?`${r.apt}${r.apt<r.nec?" ⚠":""}`:r.nec}</td><td class="r">${r.parado?"—":fmtN(r.ciclo)}</td><td class="hm">${st}${r.lv50&&r.tempo?(sim?" · aptas insuficientes":" · nível 50"):""}</td></tr>`}).join("")}</tbody></table></div></details>`;
+    return `<tr class="${r.gargalo?"gg":""}"><td>${r.gargalo?"<b>":""}${esc(r.nome)}${r.gargalo?"</b> · gargalo":""}</td><td class="r">${fmtN(r.tempo)}</td><td class="r">${r.tempo?fmtPes(r.pessoas):"—"}</td><td class="r hm">${sim?`${r.apt}${r.apt<r.nec?` <span class="wtag">abaixo</span>`:""}`:r.nec}</td><td class="r">${r.parado?"—":fmtN(r.ciclo)}</td><td class="hm">${st}${r.lv50&&r.tempo?(sim?" · aptas insuficientes":" · nível 50"):""}</td></tr>`}).join("")}</tbody></table></div></details>`;
 }
 function kpisRitmo(r,sim){
   const k=(v,t,c="")=>`<div class="kpi ${c}"><b>${v}</b><span>${t}</span></div>`;
@@ -755,7 +902,7 @@ function msgRitmo(r){
 function viewRitmo(segs){
   const its=day.producao.map(it=>ritmoItem(it,segs)).filter(Boolean);
   if(!its.length)return"";
-  let h=`<section class="card" style="margin-top:16px"><h2 style="font-size:24px"><span class="n4">5</span>Ritmo e gargalo do dia</h2>
+  let h=`<section class="card" style="margin-top:16px"><h2 class="sh">${passo(5,"fita","Ritmo e gargalo do dia")}</h2>
   <p class="small muted" style="margin:4px 0 6px">Yamazumi com quem está escalado: cada barra é o ciclo efetivo do posto (tempo padrão ÷ pessoas). A linha tracejada é o takt. Barra acima do takt é gargalo.</p>`;
   its.forEach(x=>{
     h+=`<div class="yz"><div class="yzhead"><b>${esc(x.p.nome)}</b><span class="small muted">${hhmm(x.a)}–${hhmm(x.b)} · ${fmtN(x.r.avail,0)} min disponíveis${x.r.q?` · ${fmtN(x.r.q,0)} peças`:""}</span></div>`;
@@ -815,12 +962,12 @@ function saudeMatriz(){
 function saudeHtml(){
   const it=saudeMatriz(),c={red:0,amb:0,info:0};it.forEach(x=>c[x.sev]++);
   const worst=c.red?"red":c.amb?"amb":"";
-  if(!it.length)return `<div class="card saude" id="saude"><h3 style="font-size:21px">Saúde da matriz</h3><p class="small" style="margin:4px 0 0">Nenhuma inconsistência: todos os postos têm pessoas aptas na meta e os postos habituais batem com a matriz.</p></div>`;
+  if(!it.length)return `<div class="card saude" id="saude"><h3 style="font-size:20px;display:flex;gap:10px;align-items:center"><span class="pico sm">${ic("alfineteira")}</span>Saúde da matriz</h3><p class="small" style="margin:4px 0 0">Nenhuma inconsistência: todos os postos têm pessoas aptas na meta e os postos habituais batem com a matriz.</p></div>`;
   const open=saudeOpen==null?!!c.red:saudeOpen;
   const L={red:"Crítico",amb:"Atenção",info:"Aviso"},ord={red:0,amb:1,info:2};
   const grupos=["Posto habitual","Cobertura dos postos","Pessoas","Produtos"];
-  let h=`<details class="card saude ${worst}" id="saude" ${open?"open":""}><summary><h3>Saúde da matriz</h3>
-    ${c.red?`<span class="tag red">${c.red} crítico${c.red>1?"s":""}</span>`:""}${c.amb?`<span class="tag amb">${c.amb} atenção</span>`:""}${c.info?`<span class="tag info">${c.info} aviso${c.info>1?"s":""}</span>`:""}<span class="chev">▼</span></summary>
+  let h=`<details class="card saude ${worst}" id="saude" ${open?"open":""}><summary><h3><span class="pico sm">${ic("alfineteira")}</span>Saúde da matriz</h3>
+    ${c.red?`<span class="tag red">${c.red} crítico${c.red>1?"s":""}</span>`:""}${c.amb?`<span class="tag amb">${c.amb} atenção</span>`:""}${c.info?`<span class="tag info">${c.info} aviso${c.info>1?"s":""}</span>`:""}<span class="chev">${ic("chev")}</span></summary>
     <p class="small muted" style="margin:6px 0 0">Verificação automática da matriz, dos postos habituais e dos roteiros. Atualiza a cada mudança.</p>`;
   grupos.forEach(g=>{const xs=it.filter(x=>x.g===g).sort((a,b)=>ord[a.sev]-ord[b.sev]);if(!xs.length)return;
     h+=`<div class="hgrp">${g}</div>`+xs.map(x=>`<div class="hitem"><span class="tag ${x.sev==="info"?"info":x.sev}">${L[x.sev]}</span><div class="tx">${x.txt}<small>${x.sub||""}</small></div>${x.id?`<button class="btn sm" data-act="editPessoa" data-id="${x.id}">Editar pessoa</button>`:x.prod?`<button class="btn sm" data-act="goProd" data-id="${x.prod}">Abrir produto</button>`:""}</div>`).join("")});
@@ -837,7 +984,7 @@ function render(){
   app.innerHTML=({dia:viewDia,assiduidade:viewRank,produtos:viewProdutos,matriz:viewMatriz,ajustes:viewAjustes}[tab])();
 }
 function emptyState(){
-  return `<div class="empty card" style="margin-top:24px"><h2>Comece pela matriz de versatilidade</h2>
+  return `<div class="empty card" style="margin-top:24px"><div class="emptyart">${ic("carretel")}</div><h2>Comece pela matriz de versatilidade</h2>
   <p class="muted">Importe a planilha da MV (Excel) ou um backup deste app. Depois cadastre os produtos e a escala do dia sai automática.</p>
   <div class="row" style="justify-content:center;margin-top:14px">
     <button class="btn primary" data-act="goto" data-tab="ajustes">Importar MV ou backup</button>
@@ -864,10 +1011,10 @@ function viewDia(){
       <div class="kpi ${pico>pres.length?"bad":""}"><b>${pico}</b><span>pessoas no pico</span></div>
     </div></div>`;
   h+=`<div class="steps">
-    <details class="card step" data-step="s1" ${openSteps.s1?"open":""}><summary><h2><span class="n">1</span>Quem veio hoje<span class="chev">▼</span></h2><div class="sumline">${pres.length} presentes · ${faltas} falta(s) · ${parciais} parcial(is) — toque para editar</div></summary>
+    <details class="card step" data-step="s1" ${openSteps.s1?"open":""}><summary><h2>${passo(1,"cabide","Quem veio hoje")}<span class="chev">${ic("chev")}</span></h2><div class="sumline">${pres.length} presentes · ${faltas} falta(s) · ${parciais} parcial(is) — toque para editar</div></summary>
       <div class="row small" style="margin-bottom:8px"><button class="btn sm" data-act="allP">Todas presentes</button><span class="muted">Parcial = chegou mais tarde ou saiu mais cedo.</span></div>
       <div class="plist">${ativos().map(rowPresenca).join("")}</div></details>
-    <details class="card step" data-step="s2" ${openSteps.s2||!day.producao.length?"open":""}><summary><h2><span class="n">2</span>O que será produzido, e quando<span class="chev">▼</span></h2><div class="sumline">${day.producao.length?esc(day.producao.map(it=>(produto(it.prodId)?.nome||"?")+" "+(it.ini||S.settings.inicio)+"–"+(it.fim||S.settings.fim)).join(" · ")):"Nenhum produto ainda"}</div></summary>
+    <details class="card step" data-step="s2" ${openSteps.s2||!day.producao.length?"open":""}><summary><h2>${passo(2,"carretel","O que será produzido, e quando")}<span class="chev">${ic("chev")}</span></h2><div class="sumline">${day.producao.length?esc(day.producao.map(it=>(produto(it.prodId)?.nome||"?")+" "+(it.ini||S.settings.inicio)+"–"+(it.fim||S.settings.fim)).join(" · ")):"Nenhum produto ainda"}</div></summary>
       <div class="prod-add"><select id="prodSel" aria-label="Produto"><option value="">Escolha o produto…</option>${grpProdOptions()}</select>
         <input type="number" id="prodQtd" min="0" placeholder="Qtd" aria-label="Quantidade"><button class="btn primary" data-act="addProd">Adicionar</button></div>
       <p class="small muted" style="margin:6px 0 0">Informe o horário de cada produto. Quando a linha troca de modelo, adicione o próximo com o novo horário: a escala muda naquela hora. Com quantidade e tempo padrão, o app calcula quantas pessoas cada posto precisa.</p>
@@ -882,9 +1029,9 @@ function viewDia(){
   h+=viewOrientacao(segs);
   if(blocoSel==null||blocoSel>=segs.length){blocoSel="all";if(curDate===todayISO()&&window.innerWidth<=760){const n=new Date(),m=n.getHours()*60+n.getMinutes();const i=segs.findIndex(s=>s.a<=m&&s.b>m);if(i>=0)blocoSel=i}}
   const env=(day.envios||[]).slice(-1)[0];
-  h+=`<section class="card" style="margin-top:16px"><div class="row escbar"><h2 style="font-size:24px;flex:1"><span class="n4">4</span>Escala do dia</h2>
+  h+=`<section class="card" style="margin-top:16px"><div class="row escbar"><h2 class="sh" style="flex:1">${passo(4,"maquina","Escala do dia")}</h2>
     <div class="seg" role="group" aria-label="Visualização" style="max-width:260px"><button class="P" aria-pressed="${escView==="hora"}" data-act="escView" data-v="hora">Por horário</button><button class="P" aria-pressed="${escView==="pessoa"}" data-act="escView" data-v="pessoa">Por pessoa</button></div>
-    <button class="btn primary hide-m" data-act="email">Enviar relatório</button><button class="btn hide-m" data-act="whats">Texto para o grupo</button><button class="btn hide-m" data-act="print">Imprimir</button>
+    <button class="btn primary hide-m" data-act="email">${ic("envelope")}Enviar relatório</button><button class="btn hide-m" data-act="whats">${ic("conversa")}Texto para o grupo</button><button class="btn hide-m" data-act="print">${ic("impressora")}Imprimir</button>
     ${(day.pins||[]).length?`<button class="btn danger" data-act="clearPins">Desfazer ajustes (${day.pins.length})</button>`:""}</div>`;
   if(env)h+=`<div class="lastsend">Último envio por e-mail: ${new Date(env.em).toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"})} para ${esc(env.para)} (${env.modo==="auto"?"automático":"app de e-mail"})</div>`;
   if(escView==="hora"&&segs.length>1){
@@ -894,12 +1041,12 @@ function viewDia(){
   h+=escView==="pessoa"?viewPorPessoa(segs):segs.filter((s,i)=>blocoSel==="all"||blocoSel===i).map(viewBloco).join("");
   h+=`</section>`;
   h+=viewRitmo(segs);
-  h+=`<div class="actionbar"><button class="btn primary" data-act="email">✉ Enviar relatório</button><button class="btn" data-act="whats">Texto p/ grupo</button></div>`;
+  h+=`<div class="actionbar"><button class="btn primary" data-act="email">${ic("envelope")}Enviar relatório</button><button class="btn" data-act="whats">${ic("conversa")}Texto p/ grupo</button></div>`;
   return h;
 }
 function viewOrientacao(segs){
   const cards=orientacoes(segs);
-  let h=`<section class="card" style="margin-top:16px;border-left:6px solid var(--chalk)"><h2 style="font-size:24px"><span class="n4">3</span>O que fazer hoje</h2>
+  let h=`<section class="card" style="margin-top:16px;border-left:6px solid var(--chalk)"><h2 class="sh">${passo(3,"agulha","O que fazer hoje")}</h2>
   <p class="small muted" style="margin:4px 0 10px">Para cada falta ou atraso, o app mostra quem assume o posto e por quê. Se houver opção melhor, toque em <b>Aplicar</b> e a escala muda na hora.</p>`;
   if(!cards.length)return h+`<div class="alert blue">Sem faltas, atrasos ou postos descobertos: siga a escala abaixo.</div></section>`;
   const render1=c=>{
@@ -1075,7 +1222,7 @@ function rankData(){
 function viewRank(){
   const {list,serie,n}=rankData();
   const pct=v=>(v*100).toLocaleString("pt-BR",{maximumFractionDigits:1})+"%";
-  let h=`<div class="row" style="margin-top:16px"><h2 style="font-size:28px;flex:1">Ranking de assiduidade</h2>
+  let h=`<div class="row" style="margin-top:16px"><h2 class="ph1" style="flex:1">${pagina("medalha","Ranking de assiduidade")}</h2>
     <label class="row small"><span class="muted">Período</span><select data-act="period">
     ${[["7","Últimos 7 dias"],["30","Últimos 30 dias"],["90","Últimos 90 dias"],["mes","Mês da data selecionada"],["tudo","Todo o histórico"]].map(([v,t])=>`<option value="${v}" ${rankPeriod===v?"selected":""}>${t}</option>`).join("")}</select></label></div>
     <p class="muted small">Assiduidade = horas trabalhadas ÷ horas previstas no turno. Contam faltas, atrasos e saídas antecipadas; faltas justificadas ${S.settings.contarJustificadas?"<b>também contam</b>":"<b>não penalizam</b>"} (mude em Ajustes). Empate: menos ocorrências, depois mais dias registrados. ${n} dia(s) registrado(s) no período.</p>`;
@@ -1103,7 +1250,7 @@ function sparkBars(s){
 function viewProdutos(){
   if(!selProd&&S.produtos.length)selProd=S.produtos[0].id;
   const p=produto(selProd);
-  let h=`<div class="row" style="margin-top:16px"><h2 style="font-size:28px;flex:1">Produtos e roteiros</h2><button class="btn primary" data-act="newProd">Novo produto</button></div>
+  let h=`<div class="row" style="margin-top:16px"><h2 class="ph1" style="flex:1">${pagina("bolsa","Produtos e roteiros")}</h2><button class="btn primary" data-act="newProd">Novo produto</button></div>
   <p class="muted small">Cada produto lista os postos (máquinas ou processos da matriz) por onde passa. O tempo padrão é opcional: com ele, a escala calcula quantas pessoas cada posto precisa.</p>
   <div class="two"><div class="card"><input type="text" id="prodFilter" placeholder="Buscar produto…" style="width:100%;margin-bottom:8px" aria-label="Buscar produto">
   <div class="list" id="prodList">${prodListHtml("")}</div></div><div class="card">`;
@@ -1133,7 +1280,7 @@ function postoOptions(sel){return linhas().map(L=>`<optgroup label="${esc(L)}">$
 /* ============================ VIEW: MATRIZ ============================ */
 function viewMatriz(){
   const L=linhas();
-  let h=`<div class="row" style="margin-top:16px"><h2 style="font-size:28px;flex:1">Matriz de versatilidade</h2><button class="btn" data-act="addPessoa">Nova pessoa</button><button class="btn" data-act="goto" data-tab="ajustes">Importar planilha</button></div>
+  let h=`<div class="row" style="margin-top:16px"><h2 class="ph1" style="flex:1">${pagina("carretel","Matriz de versatilidade")}</h2><button class="btn" data-act="addPessoa">Nova pessoa</button><button class="btn" data-act="goto" data-tab="ajustes">Importar planilha</button></div>
   <div class="legend" style="margin:8px 0 10px"><span class="muted">Toque na célula para mudar o nível:</span>${LV.map(v=>`<span class="lv lv${v}">${v}</span>`).join("")}<span class="muted">Apto = 75 ou mais. Linha de baixo: aptas ativas × meta.</span></div>`;
   if(mvEditId)h+=pessoaForm(pessoa(mvEditId));
   h+=saudeHtml();
@@ -1171,7 +1318,7 @@ function pessoaForm(p){
 /* ============================ VIEW: AJUSTES ============================ */
 function viewAjustes(){
   const s=S.settings;
-  return `<h2 style="font-size:28px;margin-top:16px">Ajustes</h2>
+  return `<h2 class="ph1" style="margin-top:16px">${pagina("fita","Ajustes")}</h2>
   <div class="two" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
   <div class="card"><h3 style="font-size:20px;margin-bottom:10px">Empresa e turno</h3>
     <div class="row"><div class="field" style="flex:1"><label>Empresa</label><input type="text" value="${esc(s.empresa)}" data-act="set" data-f="empresa"></div><div class="field" style="flex:1"><label>Setor</label><input type="text" value="${esc(s.setor)}" data-act="set" data-f="setor"></div></div>
@@ -1184,7 +1331,7 @@ function viewAjustes(){
       <div class="field" style="flex:2;min-width:240px"><label>E-mails que recebem o relatório</label><textarea rows="2" placeholder="gerencia@vicon.com.br, lider@vicon.com.br" data-act="setTxt" data-f="emails">${esc(s.emails||"")}</textarea><span class="help">Separe por vírgula. ${listaEmails(s.emails).length} e-mail(s) válido(s).</span></div>
       <div class="field" style="flex:1;min-width:200px"><label>Assunto</label><input type="text" value="${esc(s.emailAssunto||"")}" data-act="setTxt" data-f="emailAssunto"><label class="row small" style="margin-top:8px"><input type="checkbox" data-act="setRk" ${s.emailRanking!==false?"checked":""}> Incluir ranking de assiduidade (30 dias)</label></div>
     </div>
-    <details style="margin-top:6px"><summary class="small" style="cursor:pointer;font-weight:600">Envio automático (sem abrir o app de e-mail) ${s.emailEndpoint?"— configurado ✓":"— opcional"}</summary>
+    <details style="margin-top:6px"><summary class="small" style="cursor:pointer;font-weight:600">Envio automático (sem abrir o app de e-mail) ${s.emailEndpoint?"— configurado":"— opcional"}</summary>
       <div class="help"><ol><li>Abra script.google.com, crie um projeto e cole o arquivo <b>apps-script/envio_email.gs</b> do repositório.</li><li>Troque o TOKEN por uma senha sua e implante como <b>App da Web</b> (executar como: você; acesso: qualquer pessoa).</li><li>Cole abaixo o URL do app da Web e o mesmo TOKEN.</li></ol></div>
       <div class="row"><div class="field" style="flex:3;min-width:240px"><label>URL do app da Web (Apps Script)</label><input type="text" placeholder="https://script.google.com/macros/s/.../exec" value="${esc(s.emailEndpoint||"")}" data-act="setTxt" data-f="emailEndpoint"></div>
       <div class="field" style="flex:1;min-width:140px"><label>Token</label><input type="text" value="${esc(s.emailToken||"")}" data-act="setTxt" data-f="emailToken"></div></div>
