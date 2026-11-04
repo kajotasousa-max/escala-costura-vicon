@@ -15,6 +15,10 @@ App web (um único arquivo HTML) para a líder organizar a produção do dia na 
 
 Funciona no celular (navegação inferior, telas em cartões) e no computador.
 
+## Guia de uso
+
+O arquivo `manual.html` é o guia interativo do app, com quadros de treino, solução de problemas e teste rápido. No app, abra em **Ajustes → Guia de uso**. Pelo GitHub Pages: `https://kajotasousa-max.github.io/escala-costura-vicon/manual.html`.
+
 ## Como usar
 
 1. Abra `index.html` no navegador (Chrome, Edge ou Safari) ou pelo link do GitHub Pages.
@@ -37,6 +41,7 @@ Veja as instruções no topo de [`apps-script/envio_email.gs`](apps-script/envio
 
 ```
 index.html                 app completo (HTML + CSS + JS)
+manual.html                guia de uso interativo
 apps-script/envio_email.gs serviço opcional de envio automático de e-mail
 ```
 
