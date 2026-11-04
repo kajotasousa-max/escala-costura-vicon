@@ -1192,7 +1192,7 @@ function viewAjustes(){
     </details></div>
   <div class="card"><h3 style="font-size:20px;margin-bottom:10px">Importar matriz (Excel)</h3>
     <p class="small muted">Use a planilha no modelo 3×3×3 (aba MV). Pessoas e postos com o mesmo nome são atualizados; os novos são incluídos. Produtos e histórico de presença são mantidos.</p>
-    <input type="file" id="xlsxIn" accept=".xlsx,.xls" aria-label="Arquivo da matriz"></div>
+    <input type="file" id="xlsxIn" accept=".xlsx,.xls,.json" aria-label="Arquivo da matriz"></div>
   <div class="card"><h3 style="font-size:20px;margin-bottom:10px">Backup</h3>
     <p class="small muted">Os dados ficam ${store&&store.mode==="db"?"salvos neste app na nuvem":"salvos só neste navegador"}. Baixe um backup toda semana e guarde junto dos registros da consultoria.</p>
     <div class="row"><button class="btn primary" data-act="export">Baixar backup (.json)</button><label class="btn" style="display:inline-flex;align-items:center">Restaurar backup<input type="file" id="jsonIn" accept=".json" class="hidden"></label></div>
@@ -1251,7 +1251,7 @@ app.addEventListener("click",async e=>{
 app.addEventListener("change",e=>{
   const t=e.target,a=t.dataset.act,i=Number(t.dataset.i);
   if(t.id==="dateIn"){loadDay(t.value||todayISO());render();return}
-  if(t.id==="xlsxIn"&&t.files[0]){importXlsx(t.files[0]);t.value="";return}
+  if(t.id==="xlsxIn"&&t.files[0]){const f=t.files[0];if(/\.json$/i.test(f.name))importJson(f);else importXlsx(f);t.value="";return}
   if(t.id==="jsonIn"&&t.files[0]){importJson(t.files[0]);t.value="";return}
   if(t.id==="addLineSel"&&t.value){const p=produto(selProd);const used=new Set(p.ops.map(o=>o.postoId));S.postos.filter(q=>q.linha===t.value&&!used.has(q.id)).forEach(q=>p.ops.push({postoId:q.id,tempo:null}));if(!p.familia)p.familia=t.value;saveCfg("produtos");render();return}
   switch(a){
