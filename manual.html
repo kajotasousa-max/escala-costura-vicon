@@ -422,6 +422,8 @@ footer{max-width:1120px;margin:0 auto;padding:0 20px 40px;color:var(--muted);fon
         <ol class="steps">
           <li><div><b>01 Produção por linha</b>A meta de cada linha sai dos produtos e quantidades do passo 2. Digite o <em>Realizado</em>; desvio e status aparecem sozinhos. Todo vermelho precisa de motivo escrito.</div></li>
           <li><div><b>Detalhe hora a hora</b>Para acompanhar uma linha durante o dia, lance o real de cada hora. O app compara com a meta acumulada até aquela hora e avisa quando a diferença passa de 10 peças duas horas seguidas.</div></li>
+          <li><div><b>Fita em caixas</b>Na linha de fita, abra <span class="ui">Lançar em caixas</span> e digite as caixas fechadas de cada tipo (CA, CB, CM, CPF, TT). O app multiplica pelas peças por caixa e preenche o realizado.</div></li>
+          <li><div><b>09 Produtividade</b>Peças por homem-hora (pç/HH) de cada linha, do dia e da semana. As horas trabalhadas saem sozinhas da presença e da escala; só digite se a linha trabalhou sem plano lançado. O ganho é comparado com a linha de base: 20% ou mais aparece como <em>meta RA</em>.</div></li>
           <li><div><b>05 Pessoas e cobertura</b>Automático: presentes, ausências, remanejamentos, postos sem cobertura, quem está com nível 50 e quem treinar.</div></li>
           <li><div><b>04 Qualidade, máquinas e materiais</b>Não conformes, retrabalho, paradas, falta de material e manutenção pedida.</div></li>
           <li><div><b>06 Áreas de apoio</b>O que o corte, o silk e o arremate precisam entregar, com responsável e prazo.</div></li>
@@ -447,6 +449,7 @@ footer{max-width:1120px;margin:0 auto;padding:0 20px 40px;color:var(--muted);fon
       <h3 style="font-size:19px">O quadro na parede</h3>
       <p>O app guarda o histórico; a folha na parede é para todo mundo ver na hora. Depois de lançar presença e produção, toque em <span class="ui">Imprimir quadro A3</span>. A folha sai no layout do quadro da fábrica, já com metas, pessoas e ações, e com linhas em branco no realizado e nos desvios para preencher à caneta durante o dia.</p>
       <p class="small muted">Imprima em A3 deitado. Sem impressora A3, use "Ajustar à página" em A4. Na versão na nuvem, o botão baixa um arquivo: abra e mande imprimir.</p>
+      <div class="note"><b>Evidência para o RA.</b> No bloco 09, <span class="ui">Calcular base pelo histórico</span> usa a média de pç/HH dos dias registrados antes da semana atual (ou digite o valor do MFV atual). Toda sexta, toque em <span class="ui">Exportar semana (Excel) para o RA</span>: sai uma planilha com o resumo de ganho por linha, o dia a dia (meta, realizado, HH, pç/HH, presença) e o plano de ação.</div>
       <div class="note"><b>Cores do status.</b> Verde com 100% da meta ou mais, amarelo de 90% a 99%, vermelho abaixo de 90%. Esses cortes podem ser mudados em Ajustes.</div>
     </div>
   </section>
@@ -577,6 +580,9 @@ footer{max-width:1120px;margin:0 auto;padding:0 20px 40px;color:var(--muted);fon
       <div><b>Atingimento</b>Quanto da meta foi feito: realizado dividido pela meta. 95% quer dizer que faltaram 5%.</div>
       <div><b>Restrição</b>Algo que impede ou atrasa a produção: falta de material, máquina parada, posto sem pessoa.</div>
       <div><b>Plano de ação</b>A lista do que vai ser feito para resolver cada problema, com responsável e prazo.</div>
+      <div><b>HH (homem-hora)</b>Horas trabalhadas somando todas as pessoas. 4 pessoas por 9 horas = 36 HH.</div>
+      <div><b>pç/HH</b>Peças boas divididas pelas horas trabalhadas. É o indicador de produtividade do Brasil Mais Produtivo.</div>
+      <div><b>Linha de base</b>O pç/HH de antes da melhoria. O ganho do RA é medido contra ele.</div>
       <div><b>Meta de aptas</b>Quantas pessoas aptas cada posto deveria ter. O padrão é 2.</div>
     </div>
   </section>

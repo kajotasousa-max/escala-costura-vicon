@@ -333,7 +333,7 @@ details.step[open] .chev{transform:rotate(180deg)}
 .gdc{padding:14px 16px}
 .gdh{display:flex;align-items:center;gap:10px;font-size:17px;margin:0 0 10px;flex-wrap:wrap}
 .gdh i{font-style:normal;display:inline-grid;place-items:center;min-width:34px;height:26px;border-radius:7px;color:#fff;font-size:13px;font-weight:800;background:var(--g-tile)}
-.gdh i.n03,.gdh i.n07{background:var(--stitch)} .gdh i.n04{background:#D97706} .gdh i.n02,.gdh i.n06{background:#0F766E} .gdh i.n08{background:var(--ink)}
+.gdh i.n03,.gdh i.n07{background:var(--stitch)} .gdh i.n04{background:#D97706} .gdh i.n02,.gdh i.n06{background:#0F766E} .gdh i.n08{background:var(--ink)} .gdh i.n09{background:#21825A}
 .gdh .auto{font-size:11.5px;font-weight:700;background:var(--ok-soft);color:var(--ok);border-radius:999px;padding:1px 8px}
 table.gdt{width:100%;border-collapse:collapse;font-size:14px}
 table.gdt th{text-align:left;font-size:12px;color:var(--muted);font-weight:600;padding:6px;border-bottom:1px solid var(--line);white-space:nowrap}
@@ -996,7 +996,7 @@ const ST_ACAO=["Aberta","Em andamento","Escalada","Concluída"];
 const FOCO_SEM=["Produção conforme PCP","Produção conforme PCP","Fechamento da programação de entrega","Expedição / entrega aos clientes","Produção e preparação da próxima semana"];
 let gdHoraL=null;
 function linhasProd(){return linhas().filter(l=>l!=="Apoio")}
-function gdOf(d){d.gd=d.gd||{};const g=d.gd;g.real=g.real||{};g.obs=g.obs||{};g.hora=g.hora||{};g.q=g.q||{};g.apoio=g.apoio||{};g.restr=g.restr||[];return g}
+function gdOf(d){d.gd=d.gd||{};const g=d.gd;g.real=g.real||{};g.obs=g.obs||{};g.hora=g.hora||{};g.q=g.q||{};g.apoio=g.apoio||{};g.restr=g.restr||[];g.cx=g.cx||{};g.hh=g.hh||{};return g}
 function metasLinha(d){
   const m={},p={};
   (d.producao||[]).forEach(it=>{const pr=produto(it.prodId);if(!pr)return;const L=pr.familia||"Sem linha";m[L]=(m[L]||0)+(Number(it.qtd)||0);(p[L]=p[L]||[]).push(pr.nome.replace(/\s*—\s*linha completa$/i,""))});
@@ -1006,9 +1006,14 @@ function linhasGD(d){const {m}=metasLinha(d);const out=linhasProd();Object.keys(
 function slotsHora(){const a=mins(S.settings.inicio),b=mins(S.settings.fim),out=[];for(let t=a;t<b;t+=60){const e=Math.min(b,t+60),h=horasIntervalo(t,e);if(h>0.01)out.push({a:t,b:e,h})}return out}
 const numOrNull=v=>v===""||v==null||isNaN(Number(v))?null:Number(v);
 function somaHora(d,L){const hr=gdOf(d).hora[L];if(!hr)return null;const v=Object.values(hr).map(numOrNull).filter(x=>x!=null);return v.length?v.reduce((a,b)=>a+b,0):null}
-function realLinha(d,L){const g=gdOf(d),r=numOrNull(g.real[L]);return r!=null?r:somaHora(d,L)}
+/* fita lançada em caixas: peças = caixas × peças por caixa (Ajustes) */
+const CX_DEF={CA:1500,CB:750,CM:750,CPF:300,TT:400};
+function cxCfg(){const c=S.settings.caixas;return c&&Object.keys(c).length?c:CX_DEF}
+const ehFita=L=>/fita/i.test(L);
+function somaCx(d,L){const c=gdOf(d).cx[L];if(!c)return null;let t=0,ok=false;Object.keys(c).forEach(k=>{const n=numOrNull(c[k]);if(n!=null){t+=n*(Number(cxCfg()[k])||0);ok=true}});return ok?t:null}
+function realLinha(d,L){const g=gdOf(d),r=numOrNull(g.real[L]);if(r!=null)return r;const c=somaCx(d,L);return c!=null?c:somaHora(d,L)}
 /* meta de comparação: dia inteiro quando o realizado foi digitado; meta acumulada até a última hora lançada quando vem do hora a hora */
-function metaRef(d,L){const g=gdOf(d),mt=metasLinha(d).m[L]||0;if(numOrNull(g.real[L])!=null)return{meta:mt,ate:null};
+function metaRef(d,L){const g=gdOf(d),mt=metasLinha(d).m[L]||0;if(numOrNull(g.real[L])!=null||somaCx(d,L)!=null)return{meta:mt,ate:null};
   const hr=g.hora[L];if(!hr)return{meta:mt,ate:null};const idx=Object.keys(hr).filter(k=>numOrNull(hr[k])!=null).map(Number);if(!idx.length)return{meta:mt,ate:null};
   const sl=slotsHora(),tot=sl.reduce((a,x)=>a+x.h,0),last=Math.max(...idx);let acc=0;for(let i=0;i<=last&&i<sl.length;i++)acc+=tot?mt*sl[i].h/tot:0;return{meta:acc,ate:sl[Math.min(last,sl.length-1)]?hhmm(sl[Math.min(last,sl.length-1)].b):null}}
 function farol(real,meta){if(real==null||!meta)return null;const p=real/meta*100;return p>=Number(S.settings.gdVerde??100)?"ok":p>=Number(S.settings.gdAmarelo??90)?"amb":"red"}
@@ -1017,6 +1022,78 @@ function totaisGD(d){
   const {m}=metasLinha(d);let meta=0,real=0,ref=0,temReal=false,parcial=false;
   linhasGD(d).forEach(L=>{meta+=m[L]||0;const r=realLinha(d,L);if(r!=null){real+=r;temReal=true;const mr=metaRef(d,L);ref+=mr.meta;if(mr.ate)parcial=true}});
   return{meta,real:temReal?real:null,ref,ating:temReal&&ref?real/ref:null,parcial};
+}
+/* ---------- PRODUTIVIDADE (pç/HH) — indicador do RA do Brasil Mais Produtivo ----------
+   HH da linha = soma, em cada bloco de horário da escala, das horas de cada pessoa escalada nos postos da linha.
+   Vem sozinho da presença (inclusive parciais) e do plano do dia; a líder só digita se a linha trabalhou sem plano lançado. */
+function hhAuto(d){
+  const sv=day,o={};let segs=[];
+  try{day=d;segs=escala()}catch(e){segs=[]}finally{day=sv}
+  segs.forEach(s=>s.as.forEach(x=>{const q=posto(x.postoId);if(q)o[q.linha]=(o[q.linha]||0)+s.h}));
+  let tot=0;ativos().forEach(p=>{tot+=horasPessoa((d.presenca||{})[p.id])});o.__total=tot;
+  return o;
+}
+function hhLinha(d,L,au){const v=numOrNull(gdOf(d).hh[L]);if(v!=null)return v;const a=(au||hhAuto(d))[L];return a>0.01?a:null}
+const r1=v=>v==null?null:Math.round(v*10)/10, r2=v=>v==null?null:Math.round(v*100)/100;
+const fmtPH=v=>v==null||!isFinite(v)?"—":v.toLocaleString("pt-BR",{maximumFractionDigits:v<10?2:1});
+function prodDia(d){
+  const au=hhAuto(d),out={};let R=0,temR=false;
+  linhasGD(d).forEach(L=>{const r=realLinha(d,L),hh=hhLinha(d,L,au);out[L]={r,hh,ph:r!=null&&hh?r/hh:null};if(r!=null){R+=r;temR=true}});
+  const H=numOrNull(gdOf(d).hh.__total)??(au.__total>0.01?au.__total:null);
+  out.__total={r:temR?R:null,hh:H,ph:temR&&H?R/H:null};
+  return out;
+}
+function prodSemana(iso){
+  const ac={};
+  semanaDe(iso).forEach(x=>{const d=diaSemana(x);if(!d)return;const pd=prodDia(d);Object.keys(pd).forEach(L=>{const v=pd[L];if(v.r!=null&&v.hh){ac[L]=ac[L]||{r:0,hh:0,dias:0};ac[L].r+=v.r;ac[L].hh+=v.hh;ac[L].dias++}})});
+  Object.values(ac).forEach(v=>v.ph=v.hh?v.r/v.hh:null);
+  return ac;
+}
+function baseOf(L){const b=(S.settings.baseHH||{})[L];return numOrNull(b)}
+function ganhoTag(g){if(g==null)return `<span class="muted small">defina a base</span>`;const t=(g>0?"+":"")+fmtPct(g);return g>=0.2?`<span class="tag ok">${t} · meta RA</span>`:g>=0?`<span class="tag amb">${t}</span>`:`<span class="tag red">${t}</span>`}
+/* base = pç/HH médio de todos os dias registrados antes da semana atual */
+function baseHistorico(){
+  const ini=semanaDe(curDate)[0],ac={};
+  Object.keys(S.dias).filter(k=>k<ini).forEach(k=>{const pd=prodDia(clone(S.dias[k]));Object.keys(pd).forEach(L=>{const v=pd[L];if(v.r!=null&&v.hh){ac[L]=ac[L]||{r:0,hh:0,n:0};ac[L].r+=v.r;ac[L].hh+=v.hh;ac[L].n++}})});
+  return ac;
+}
+function viewProdutividade(){
+  const pd=prodDia(day),ps=prodSemana(curDate),au=hhAuto(day),g=gdOf(day),Ls=linhasGD(day);
+  const linha=(L,lab,tot)=>{const v=pd[L]||{},w=ps[L],b=baseOf(L),gn=w&&b?w.ph/b-1:null,ph0=tot?au.__total:au[L];
+    return `<tr${tot?' class="tot"':""}><td><b>${esc(lab)}</b></td><td class="r">${fmtQ(v.r)}</td>
+    <td class="r"><input type="number" min="0" step="0.5" class="qin" value="${g.hh[L]??""}" placeholder="${ph0>0.01?fmtN(ph0,1):"—"}" data-act="gdHH" data-l="${esc(L)}" aria-label="Horas trabalhadas ${esc(lab)}"></td>
+    <td class="r">${fmtPH(v.ph)}</td><td class="r"><b>${fmtPH(w&&w.ph)}</b>${w?`<div class="small muted">${w.dias} dia(s)</div>`:""}</td>
+    <td class="r"><input type="number" min="0" step="0.01" class="qin" value="${b??""}" placeholder="—" data-act="gdBase" data-l="${esc(L)}" aria-label="Linha de base ${esc(lab)}"></td>
+    <td>${ganhoTag(gn)}</td></tr>`};
+  return `<section class="card gdc" style="margin-top:14px"><h3 class="gdh"><i class="n09">09</i>Produtividade (peças por homem-hora) <span class="auto">HH automático</span></h3>
+  <p class="small muted" style="margin:0 0 6px">Indicador do RA do Brasil Mais Produtivo: ganho de 20% ou mais sobre a linha de base. As horas trabalhadas (HH) saem da presença e da escala do dia; só digite se a linha trabalhou sem plano lançado.</p>
+  <div class="tablewrap"><table class="gdt"><thead><tr><th>Linha</th><th class="r">Peças hoje</th><th class="r">HH hoje</th><th class="r">pç/HH hoje</th><th class="r">pç/HH semana</th><th class="r">Base pç/HH</th><th>Ganho × base</th></tr></thead><tbody>
+  ${Ls.map(L=>linha(L,L,false)).join("")}
+  ${linha("__total","Fábrica (todas as presentes)",true)}
+  </tbody></table></div>
+  <div class="row" style="margin-top:8px"><button class="btn sm" data-act="gdBaseHist">Calcular base pelo histórico</button><button class="btn sm primary" data-act="gdExport">${ic("impressora")}Exportar semana (Excel) para o RA</button></div>
+  <p class="small muted" style="margin:6px 0 0">Base = pç/HH antes da melhoria. "Calcular base pelo histórico" usa a média dos dias registrados antes desta semana; também pode digitar o valor do MFV atual.</p></section>`;
+}
+async function exportSemanaXlsx(){
+  try{await loadSheetJS()}catch(e){toast(e.message);return}
+  flushDay();
+  const sem=semanaDe(curDate),at=ativos(),ps=prodSemana(curDate);
+  const dia=[["Data","Linha","Meta (pç)","Realizado (pç)","HH (pessoas × horas)","pç/HH","Presentes","Quadro","Faltas","Parciais","Observação"]];
+  sem.forEach(iso=>{const d=diaSemana(iso);if(!d)return;const pd=prodDia(d),{m}=metasLinha(d),pr=d.presenca||{};
+    const pres=at.filter(p=>horasPessoa(pr[p.id])>0.01).length,fal=at.filter(p=>["F","J"].includes(pr[p.id]?.st)).length,par=at.filter(p=>pr[p.id]?.st==="A").length;
+    linhasGD(d).forEach(L=>{const v=pd[L];dia.push([fmtDate(iso),L,m[L]||0,v.r,r1(v.hh),r2(v.ph),pres,at.length,fal,par,gdOf(d).obs[L]||""])});
+    const t=pd.__total;dia.push([fmtDate(iso),"FÁBRICA (todas as presentes)",metasLinha(d)&&Object.values(m).reduce((a,b)=>a+b,0),t.r,r1(t.hh),r2(t.ph),pres,at.length,fal,par,""]);
+  });
+  const res=[["Linha","Peças na semana","HH na semana","pç/HH semana","Base pç/HH","Ganho sobre a base","Atinge 20% (RA B+P)?","Dias com registro"]];
+  [...linhasGD(day),"__total"].forEach(L=>{const w=ps[L],b=baseOf(L),gn=w&&b?w.ph/b-1:null;res.push([L==="__total"?"FÁBRICA (todas as presentes)":L,w?w.r:null,w?r1(w.hh):null,w?r2(w.ph):null,b,gn==null?null:Math.round(gn*1000)/1000,gn==null?"sem base":gn>=0.2?"SIM":"NÃO",w?w.dias:0])});
+  const ac=[["Problema / desvio","Ação","Responsável","Prazo","Status","Concluída em"]];
+  (S.acoes||[]).forEach(a=>ac.push([a.prob||"",a.acao||"",a.resp||"",a.prazo?fmtDate(a.prazo):"",a.status||"",a.concluidaEm?fmtDate(a.concluidaEm):""]));
+  const wb=XLSX.utils.book_new(),add=(rows,name,w)=>{const sh=XLSX.utils.aoa_to_sheet(rows);sh["!cols"]=w.map(x=>({wch:x}));XLSX.utils.book_append_sheet(wb,sh,name)};
+  add(res,"Resumo RA",[30,16,14,14,12,16,20,16]);add(dia,"Dia a dia",[11,30,10,14,18,9,10,8,8,9,40]);add(ac,"Plano de ação",[36,36,16,11,14,13]);
+  const fn=`GD_semana_${(S.settings.empresa||"vicon").toLowerCase()}_${sem[0]}.xlsx`,data=XLSX.write(wb,{bookType:"xlsx",type:"array"}),blob=new Blob([data],{type:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"});
+  let dl=null;try{if(window.claude&&window.claude.use)dl=await window.claude.use("downloads")}catch(e){}
+  if(dl){try{const r=await dl.save({filename:fn,data:blob});if(r&&r.status==="saved")toast("Planilha da semana baixada.")}catch(e){if(e.code!=="cancelled"&&e.code!=="declined")toast("Não foi possível baixar: "+(e.message||e.code))}return}
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=fn;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},2000);toast("Planilha da semana baixada.");
 }
 function gdPessoas(segs){
   const at=ativos();
@@ -1057,7 +1134,7 @@ function viewGD(){
   /* 01 + 02 */
   h+=`<section class="card gdc" style="margin-top:14px"><h3 class="gdh"><i class="n01">01</i>Produção por linha — planejado × realizado</h3>
   <div class="tablewrap"><table class="gdt"><thead><tr><th>Linha</th><th>Produto / pedido</th><th class="r">Meta</th><th class="r">Realizado</th><th class="r">Desvio</th><th>Status</th><th>Principal desvio / observação</th></tr></thead><tbody>
-  ${Ls.map(L=>{const mt=m[L]||0,r=realLinha(day,L),sh=somaHora(day,L),mr=metaRef(day,L),f=farol(r,mr.meta);
+  ${Ls.map(L=>{const mt=m[L]||0,r=realLinha(day,L),sh=somaCx(day,L)??somaHora(day,L),mr=metaRef(day,L),f=farol(r,mr.meta);
     return `<tr><td><b>${esc(L)}</b></td><td class="small">${esc((p[L]||[]).join(" + ")||"—")}</td><td class="r">${fmtQ(mt)}</td>
     <td class="r"><input type="number" min="0" class="qin" value="${g.real[L]??""}" placeholder="${sh!=null?fmtQ(sh):"—"}" data-act="gdReal" data-l="${esc(L)}" aria-label="Realizado ${esc(L)}"></td>
     <td class="r ${r!=null&&r-mr.meta<0?"neg":""}">${r==null?"—":(r-mr.meta>0?"+":"")+fmtQ(r-mr.meta)}${mr.ate?`<div class="small muted">até ${mr.ate}</div>`:""}</td><td>${farolTag(f)}</td>
@@ -1065,6 +1142,10 @@ function viewGD(){
   <tr class="tot"><td><b>Total ${esc(S.settings.empresa||"")}</b></td><td>—</td><td class="r"><b>${fmtQ(T.meta)}</b></td><td class="r"><b>${fmtQ(T.real)}</b></td><td class="r ${T.real!=null&&T.real-T.ref<0?"neg":""}"><b>${T.real==null?"—":(T.real-T.ref>0?"+":"")+fmtQ(T.real-T.ref)}</b></td><td>${farolTag(fT)}</td><td></td></tr>
   </tbody></table></div>
   <p class="small muted" style="margin:6px 0 0">Status: verde com ${S.settings.gdVerde??100}% da meta ou mais, amarelo de ${S.settings.gdAmarelo??90}% até abaixo disso, vermelho abaixo de ${S.settings.gdAmarelo??90}% (mude em Ajustes). Todo vermelho precisa de motivo escrito.</p>`;
+  Ls.filter(ehFita).forEach(L=>{const c=g.cx[L]||{},cfg=cxCfg(),sc=somaCx(day,L);
+    h+=`<details class="hora" ${sc!=null?"open":""}><summary>Lançar ${esc(L)} em caixas <span class="muted small">${sc!=null?`= ${fmtQ(sc)} peças`:"(caixas fechadas no dia × peças por caixa)"}</span></summary>
+    <div class="row small" style="margin:8px 0;flex-wrap:wrap;gap:10px">${Object.keys(cfg).map(k=>`<label class="row" style="gap:4px"><b>${esc(k)}</b><input type="number" min="0" class="qin" style="width:70px" value="${c[k]??""}" data-act="gdCx" data-l="${esc(L)}" data-k="${esc(k)}" aria-label="Caixas ${esc(k)}"><span class="muted">cx × ${fmtQ(cfg[k])}</span></label>`).join("")}</div>
+    <p class="small muted" style="margin:0">As caixas viram o realizado da linha quando ele está em branco. Peças por caixa em Ajustes.</p></details>`});
   /* hora a hora */
   const LH=gdHoraL&&Ls.includes(gdHoraL)?gdHoraL:(Ls.find(L=>/4/.test(L))||Ls[0]);
   if(LH){
@@ -1078,6 +1159,7 @@ function viewGD(){
   }
   h+=`</section>`;
 
+  h+=viewProdutividade();
   h+=`<div class="gdgrid">`;
   /* 05 pessoas */
   h+=`<section class="card gdc"><h3 class="gdh"><i class="n05">05</i>Pessoas e cobertura dos postos <span class="auto">automático</span></h3>
@@ -1122,9 +1204,9 @@ function viewGD(){
     ${conc.length?`<details style="margin-top:10px"><summary class="small" style="cursor:pointer;font-weight:600">Concluídas recentemente (${conc.length})</summary><div class="tablewrap"><table class="gdt"><tbody>${conc.map(rowA).join("")}</tbody></table></div></details>`:""}</section>`;
   /* 08 semana */
   const sem=semanaDe(curDate),DN=["Segunda","Terça","Quarta","Quinta","Sexta"];
-  h+=`<section class="card gdc" style="margin-top:14px"><h3 class="gdh"><i class="n08">08</i>Acompanhamento semanal — produção e entrega</h3><div class="tablewrap"><table class="gdt"><thead><tr><th>Dia</th><th>Foco / programação</th><th class="r">Planejado</th><th class="r">Realizado</th><th class="r">Saldo</th><th>Status</th></tr></thead><tbody>
-    ${sem.map((iso,i)=>{const d=diaSemana(iso),t=d?totaisGD(d):null,f=t&&t.real!=null?farol(t.real,t.ref):null;
-      return `<tr class="${iso===curDate?"hoje":""} ${i===3?"quinta":""}"><td><b>${DN[i]}</b> <span class="muted small">${fmtDate(iso).slice(0,5)}</span></td><td class="small">${FOCO_SEM[i]}</td><td class="r">${t&&t.meta?fmtQ(t.meta):"—"}</td><td class="r">${t?fmtQ(t.real):"—"}</td><td class="r ${t&&t.real!=null&&t.real-t.ref<0?"neg":""}">${t&&t.real!=null?(t.real-t.ref>0?"+":"")+fmtQ(t.real-t.ref):"—"}${t&&t.parcial?`<div class="small muted">parcial</div>`:""}</td><td>${t&&t.real!=null?farolTag(f):""}</td></tr>`}).join("")}
+  h+=`<section class="card gdc" style="margin-top:14px"><h3 class="gdh"><i class="n08">08</i>Acompanhamento semanal — produção e entrega</h3><div class="tablewrap"><table class="gdt"><thead><tr><th>Dia</th><th>Foco / programação</th><th class="r">Planejado</th><th class="r">Realizado</th><th class="r">Saldo</th><th>Status</th><th class="r">pç/HH</th></tr></thead><tbody>
+    ${sem.map((iso,i)=>{const d=diaSemana(iso),t=d?totaisGD(d):null,f=t&&t.real!=null?farol(t.real,t.ref):null,ph=d&&t&&t.real!=null?prodDia(d).__total.ph:null;
+      return `<tr class="${iso===curDate?"hoje":""} ${i===3?"quinta":""}"><td><b>${DN[i]}</b> <span class="muted small">${fmtDate(iso).slice(0,5)}</span></td><td class="small">${FOCO_SEM[i]}</td><td class="r">${t&&t.meta?fmtQ(t.meta):"—"}</td><td class="r">${t?fmtQ(t.real):"—"}</td><td class="r ${t&&t.real!=null&&t.real-t.ref<0?"neg":""}">${t&&t.real!=null?(t.real-t.ref>0?"+":"")+fmtQ(t.real-t.ref):"—"}${t&&t.parcial?`<div class="small muted">parcial</div>`:""}</td><td>${t&&t.real!=null?farolTag(f):""}</td><td class="r">${fmtPH(ph)}</td></tr>`}).join("")}
     </tbody></table></div></section>`;
   return h;
 }
@@ -1217,6 +1299,8 @@ ${pad(ab,5).map(a=>`<tr${a&&acaoVencida(a)?' class="qta"':""}><td>${L_(a&&a.prob
 </div></div>
 <div class="bx"><h2 class="c8">08 | ACOMPANHAMENTO SEMANAL — PRODUÇÃO E ENTREGA</h2><table><tr><th>DIA</th><th>FOCO / PROGRAMAÇÃO</th><th class="r">PLANEJADO</th><th class="r">REALIZADO</th><th>SALDO / OBSERVAÇÃO</th></tr>
 ${sem.map((iso,i)=>{const d=diaSemana(iso),t=d?totaisGD(d):null;return `<tr${i===3?' class="qta"':""}><td><b>${DN[i].toUpperCase()}</b> ${fmtDate(iso).slice(0,5)}</td><td>${FOCO_SEM[i]}</td><td class="r">${t&&t.meta?fmtQ(t.meta):L_(null,50)}</td><td class="r">${t&&t.real!=null?fmtQ(t.real):L_(null,50)}</td><td>${t&&t.real!=null?fmtQ(t.real-t.meta):L_(null,160)}</td></tr>`}).join("")}</table></div>
+${(()=>{const pd=prodDia(day),ps=prodSemana(curDate);return `<div class="bx"><h2 class="c2">09 | PRODUTIVIDADE — PEÇAS POR HOMEM-HORA (RA BRASIL MAIS PRODUTIVO)</h2><table><tr><th>LINHA</th><th class="r">PEÇAS HOJE</th><th class="r">HH HOJE</th><th class="r">pç/HH HOJE</th><th class="r">pç/HH SEMANA</th><th class="r">BASE</th><th class="r">GANHO</th></tr>
+${[...Ls,"__total"].map(L=>{const v=pd[L]||{},w=ps[L],b=baseOf(L),gn=w&&b?w.ph/b-1:null;return `<tr><td><b>${L==="__total"?"FÁBRICA":esc(L.toUpperCase())}</b></td><td class="r">${L_(v.r!=null?fmtQ(v.r):null,50)}</td><td class="r">${L_(v.hh?fmtN(v.hh,1):null,40)}</td><td class="r">${L_(v.ph!=null?fmtPH(v.ph):null,40)}</td><td class="r">${w?fmtPH(w.ph):L_(null,40)}</td><td class="r">${b!=null?fmtPH(b):L_(null,40)}</td><td class="r ${gn!=null&&gn<0?"neg":""}">${gn!=null?(gn>0?"+":"")+fmtPct(gn):L_(null,40)}</td></tr>`}).join("")}</table></div>`})()}
 <div class="foot">REUNIÃO DIÁRIA • 10 MINUTOS &nbsp;|&nbsp; 1. Resultado &nbsp;2. Programação &nbsp;3. Restrições &nbsp;4. Ações e responsáveis</div>
 <div class="leg">STATUS: VERDE = ${S.settings.gdVerde??100}% da meta ou mais &nbsp;|&nbsp; AMARELO = atenção / risco &nbsp;|&nbsp; VERMELHO = abaixo de ${S.settings.gdAmarelo??90}%, exige ação · Gerado pelo app Escala da Costura em ${new Date().toLocaleString("pt-BR",{dateStyle:"short",timeStyle:"short"})}</div>
 </body></html>`;
@@ -1636,6 +1720,10 @@ function viewAjustes(){
       <div class="field" style="flex:1;min-width:140px"><label>Token</label><input type="text" value="${esc(s.emailToken||"")}" data-act="setTxt" data-f="emailToken"></div></div>
       <button class="btn" data-act="testEmail" ${s.emailEndpoint&&listaEmails(s.emails).length?"":"disabled"}>Enviar e-mail de teste</button>
     </details></div>
+  <div class="card"><h3 style="font-size:20px;margin-bottom:10px">Fita: peças por caixa</h3>
+    <p class="small muted">Usado no GD para lançar a fita em caixas fechadas. Apague o número para remover um tipo.</p>
+    <div class="row" style="flex-wrap:wrap;gap:10px">${Object.entries(cxCfg()).map(([k,v])=>`<div class="field" style="width:96px"><label>${esc(k)}</label><input type="number" min="0" value="${v}" data-act="setCx" data-k="${esc(k)}"></div>`).join("")}
+    <div class="field" style="width:120px"><label>Novo tipo</label><input type="text" placeholder="ex.: CA NOVA" data-act="setCxNovo"></div></div></div>
   <div class="card"><h3 style="font-size:20px;margin-bottom:10px">Importar matriz (Excel)</h3>
     <p class="small muted">Use a planilha no modelo 3×3×3 (aba MV). Pessoas e postos com o mesmo nome são atualizados; os novos são incluídos. Produtos e histórico de presença são mantidos.</p>
     <input type="file" id="xlsxIn" accept=".xlsx,.xls,.json" aria-label="Arquivo da matriz"></div>
@@ -1655,6 +1743,9 @@ app.addEventListener("click",async e=>{
     case"goto":tab=b.dataset.tab;render();window.scrollTo(0,0);break;
     case"reuniao":reu=null;reuniao(0);break;
     case"gdPrint":imprimirGD();break;
+    case"gdExport":exportSemanaXlsx();break;
+    case"gdBaseHist":{const ac=baseHistorico(),ks=Object.keys(ac);if(!ks.length){toast("Ainda não há dias anteriores a esta semana com peças e HH registrados.");break}
+      S.settings.baseHH=S.settings.baseHH||{};ks.forEach(L=>{S.settings.baseHH[L]=r2(ac[L].r/ac[L].hh)});saveCfg("settings");render();toast(`Base calculada para ${ks.length} linha(s) com ${Math.max(...ks.map(k=>ac[k].n))} dia(s) de histórico.`);break}
     case"gdRAdd":gdOf(day).restr.push({area:linhasGD(day)[0]||"",prob:"",imp:"",apoio:""});saveDaySoon();render();break;
     case"gdRDel":gdOf(day).restr.splice(i,1);saveDaySoon();render();break;
     case"gdRAcao":{const r=gdOf(day).restr[i];const a={id:uid("a"),criado:curDate,prob:(r.area?r.area+": ":"")+(r.prob||""),acao:r.apoio||"",resp:"",prazo:"",status:"Aberta"};S.acoes.push(a);r.acaoId=a.id;saveCfg("acoes");saveDaySoon();render();toast("Ação criada no plano de ação (bloco 07). Defina responsável e prazo.");break}
@@ -1731,6 +1822,11 @@ app.addEventListener("change",e=>{
     case"setGD":S.settings[t.dataset.f]=Number(t.value)||0;saveCfg("settings");break;
     case"gdReal":gdOf(day).real[t.dataset.l]=t.value===""?null:Number(t.value);saveDaySoon();render();break;
     case"gdObs":gdOf(day).obs[t.dataset.l]=t.value;saveDaySoon();break;
+    case"gdHH":{const g=gdOf(day);if(t.value==="")delete g.hh[t.dataset.l];else g.hh[t.dataset.l]=Number(t.value);saveDaySoon();render();break}
+    case"gdCx":{const g=gdOf(day),L=t.dataset.l;g.cx[L]=g.cx[L]||{};if(t.value==="")delete g.cx[L][t.dataset.k];else g.cx[L][t.dataset.k]=Number(t.value);saveDaySoon();render();break}
+    case"gdBase":{S.settings.baseHH=S.settings.baseHH||{};if(t.value==="")delete S.settings.baseHH[t.dataset.l];else S.settings.baseHH[t.dataset.l]=Number(t.value);saveCfg("settings");render();break}
+    case"setCx":{S.settings.caixas={...cxCfg()};const k=t.dataset.k;if(t.value==="")delete S.settings.caixas[k];else S.settings.caixas[k]=Number(t.value);saveCfg("settings");render();break}
+    case"setCxNovo":{const k=t.value.trim().toUpperCase();if(k){S.settings.caixas={...cxCfg(),[k]:0};saveCfg("settings");render()}break}
     case"gdHora":{const g=gdOf(day),L=t.dataset.l;g.hora[L]=g.hora[L]||{};if(t.value==="")delete g.hora[L][t.dataset.i];else g.hora[L][t.dataset.i]=Number(t.value);saveDaySoon();render();break}
     case"gdHoraL":gdHoraL=t.value;render();break;
     case"gdRisco":gdOf(day).risco=t.value===""?null:Number(t.value);saveDaySoon();break;
